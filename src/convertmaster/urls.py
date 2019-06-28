@@ -4,5 +4,5 @@ from accounts import urls as myaccounturls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('convert/',include(myaccounturls),name="blog"),
+    path('convert/',include(myaccounturls),name="blog")
 ]
