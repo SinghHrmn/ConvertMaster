@@ -10,7 +10,7 @@ from django.contrib.auth.models import User,auth
 # Create your views here.
 
 def index(request):
-    return render(request,"index.html")
+    return render(request,"accounts/index.html")
 
 def register_user(request):
 
@@ -42,7 +42,7 @@ def register_user(request):
         else:
             messages.error(request,"Passwords do not match")
 
-    return render(request,"register_user.html")
+    return render(request,"accounts/register_user.html")
 
 
 def login_user(request):
@@ -61,11 +61,11 @@ def login_user(request):
             messages.error(request,"Enter valid username and password")
             return HttpResponseRedirect("/convert/login_user")
 
-    return render(request,"login_user.html")
+    return render(request,"accounts/login_user.html")
 
 @login_required
 def dashboard(request):
-    return render(request,"dashboard.html")
+    return render(request,"accounts/dashboard.html")
 
 def logout(request):
     if request.method=="POST":
