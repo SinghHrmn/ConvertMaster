@@ -29,12 +29,12 @@ body{
     top: 35%;
     left: 50%;
     margin-top: 105px;
-    margin-left: -170px;
-    width:400px;
+    margin-left: -290px;
+    width:643px;
     height: 350px;
     text-align: center;
     transition: all 1000ms;
-    color: azure;
+    color:#fffd82;
     
 }
 
@@ -62,13 +62,13 @@ body{
 
 }
 
-.about_cm .logo{
-    height: 192px;
+.logo{
+    height: 300px;
     width: 592px;
     margin-left: 30%;
 }
 
-.about_cm .cm_lines{
+.cm_lines{
 
     margin-top: 1rem;
     line-height: 1.7;
@@ -77,7 +77,7 @@ body{
     text-align: justify;
 }
 
-.about_cm .img_logo{
+.img_logo{
     background-color:#ffe6ff; 
 }
 
