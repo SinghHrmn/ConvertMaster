@@ -1,0 +1,83 @@
+body{
+
+    margin: 0;
+    font-family: sans-serif;
+    background-color:#060613;
+   
+}
+
+.showcase::after{
+
+    content:'' ;
+    height: 100vh;
+    width: 100%;
+    background-image: url(../../media/images/background_img.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    transition: all 1000ms;
+}
+
+
+.content{
+
+    position: absolute;
+    z-index: 1;
+    top: 35%;
+    left: 50%;
+    margin-top: 105px;
+    margin-left: -170px;
+    width:400px;
+    height: 350px;
+    text-align: center;
+    transition: all 1000ms;
+    color: azure;
+    
+}
+
+.content .title{
+
+    font-size: 4rem;
+    margin-top: -2rem;
+
+}
+
+.content .text{
+
+    margin-top: 1rem;
+    line-height: 1.7;
+    font-size: 2.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.about_cm{
+    background-color: black;
+    color: lightblue;
+    text-align: center;
+    transition: all 1000ms;
+    position: absolute;
+
+}
+
+.about_cm .logo{
+    height: 192px;
+    width: 592px;
+    margin-left: 30%;
+}
+
+.about_cm .cm_lines{
+
+    margin-top: 1rem;
+    line-height: 1.7;
+    font-size: 2.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: justify;
+}
+
+.about_cm .img_logo{
+    background-color:#ffe6ff; 
+}
+

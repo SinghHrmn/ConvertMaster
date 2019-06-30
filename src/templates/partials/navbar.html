@@ -1,15 +1,13 @@
+<!-- 
 <div class="container-fluid" style="background-color:#001133">
     <nav class="navbar">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/convert/">ConvertMaster</a>
+        <div class="container-fluid" style="padding: 0.5px 0px 0px 0px">
+          <div class="navbar-header" style="padding: 0.5px 2px 2px 0.5px">
+            <a class="navbar-brand" href="/convert/"><img src="../media/images/navbar_logo.png" style="height:50px;width:150px; padding: 0px 0px 0px 2px"></a>
           </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/convert/">Home</a></li>
-            <li><a href="#">ConvertFiles</a></li>
-            <li><a href="#">{{user.username}}</a></li>
-
             
+            <li><a href="#">ConvertFiles</a></li>            
           </ul>
           {% if user.is_authenticated %}
               <ul class="nav navbar-nav navbar-right">
@@ -42,18 +40,96 @@
     </nav>
   </div>
   
+ -->
+
+<style>
+
+nav {
+
+  width: 100%;
+  background-color:#060613;
   
+}
+
+ul{
+
+  margin:0 0 0 90px;
+  padding:0px;
+  list-style-type: none;
+  display: block
+}
+
+li{
+  float: left;
+  margin-left:0.5px;
+}
+
+#logo{
+
+  position: absolute;
+  height: 20px;
+  width:30px;
+  display: inline-block;
+  margin-top: 1.5px;
+  margin-left: 5px;
+
+}
+nav a{
+
+  width:100px;
+  display: block;
+  padding: 20px,15px;
+  text-decoration: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: cyan;
+  text-align: center;
+}
+
+nav a:hover{
+
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+
+
+
+</style>
+
+
+
+
+<!-- <div class="logo navbar-header">
+  <a href="/convert/"><img src="../media/images/navbar_logo.png"></a>
+</div> -->
+<nav class="nav navbar nav-pills">
+  <ul class="nav navbar-nav">
+    
+    <li><a href="/convert/"><i>CM</i><img id="logo" src="../media/images/logo_short.png"></a></li>
+    <li><a href="/convert/">Home</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Documents</a></li>
+
+  </ul>
+
+  {% if user.is_authenticated %}
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="/convert/Dashboard">Welcome {{ user.username }}</a></li>
+      <li><a href="javascript:{document.getElementById('logout').submit()}">Logout</a>  </li>
+      <form method="POST" action="/convert/logout" id='logout'>
+        {% csrf_token %}
+        <input type="hidden" />
+      </form>
+    </ul>
+              
+  {% else %}
+                
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="/convert/register_user">Register</a></li>
+      <li><a href="/convert/login_user">Login</a></li>
+    </ul>
+
+  {% endif %}
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+</nav>

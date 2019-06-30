@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,17 +6,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Convert Master</title>
-    <style>
-        li{
-            
-            float: left;
-            
+    <script src="{% static 'jquery-3.3.1.min.js' %}" ></script>
+    <script src="{% static 'jquery-validation-1.17.0/dist/jquery.validate.js' %}" ></script>
 
-        }
-    </style>
+    <link href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.css'  %}" rel="stylesheet" >
+    <script src="{% static 'main.js' %}" rel='stylesheet'></script>
+    <link rel="stylesheet" href="{% static 'css/index_style.css' %}">
+    
 </head>
-<body>
-    <ul>
+
+<body style="margin: 0px; padding:0px">
+
+    <div class="container-fluid">
+    <!-- navigation bar -->
+    {% include 'partials/navbar.html' %}
+
+
+    <!-- intropage -->
+    <header class="showcase">
+        
+        <div class="content">
+
+            <div class="title">
+                <b>Welcome to ConvertMaster!</b>
+            </div>
+
+            <div class="text">
+                Your Online type Conversion Friend</span>
+            </div>
+
+        </div> 
+
+    </header>
+
+
+    <!-- section2 about convertmaster  -->
+
+
+    <section  class="about_cm">
+        <div class="img_logo">
+            <img src="../media/images/navbar_logo.png" class="logo img img-responsive img-rounded" alt="Convert Master">
+        </div>
+        
+        <div class="col-sm-1">
+
+
+        </div>
+        <div class="col-sm-10 cm_lines">
+            
+            <p>
+                
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse aliquam debitis dolorem commodi deserunt ullam, blanditiis ut optio iure. Consequuntur voluptatum quia dolores, nam modi nobis, eum esse inventore sed recusandae ex quisquam neque ea minus eius consequatur dignissimos facilis soluta ducimus perferendis, officiis suscipit porro reprehenderit. Provident dolores quod cum error, numquam fugit exercitationem mollitia molestias ipsum? Eum, at!
+        
+            </p>
+        
+        </div>
+
+        <div class="col-sm-1">
+
+
+        </div>
+        
+    
+    </section>
+    
+    <!-- services provided by convert master-->
+        
+    <section class="services">
+
+        <div class="container grid-3">
+            <div>
+                <h3><i>Xml to Csv</i></h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, doloremque!</p>
+            </div>
+
+            <div>
+                <h3><i>Xml to Csv</i></h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, doloremque!</p>
+            </div>
+
+            <div>
+                <h3><i>Xml to Csv</i></h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, doloremque!</p>
+            </div>
+        </div>
+
+    </section>
+
+<footer class="center">
+
+    <p>ConvertMaster &copy; 2018</p>
+
+</footer>
+</div>
+</body>
+</html>
+
+
+
+<!-- <ul>
         <li>Convert Master</li>
         <li>Home</li>
         <li>Services</li>
@@ -36,9 +125,4 @@
     <button>CSV to JSON</button>
     <button>CSV to XML</button>
     <button>JSON to XML</button>
-    <button>JSON to CSV</button>
-
-
-
-</body>
-</html>
+    <button>JSON to CSV</button> -->
