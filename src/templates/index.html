@@ -11,39 +11,44 @@
 
     <link href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.css'  %}" rel="stylesheet" >
     <script src="{% static 'main.js' %}" rel='stylesheet'></script>
+    <script src="{% static 'jquery.fullpage.min.js' %}" rel='stylesheet'></script>
+
     <link rel="stylesheet" href="{% static 'css/index_style.css' %}">
     
 </head>
 
 <body style="margin: 0px; padding:0px">
+    <div id="fullpage">
+        <section>
+                    <div class="container-fluid">
+            <!-- navigation bar -->
+            {% include 'partials/navbar.html' %}
 
-    <div class="container-fluid">
-    <!-- navigation bar -->
-    {% include 'partials/navbar.html' %}
 
+            <!-- intropage -->
+            <header class="showcase">
+                
+                <div class="content">
 
-    <!-- intropage -->
-    <header class="showcase">
-        
-        <div class="content">
+                    <div class="title">
+                        <b>Welcome to Convert Master!</b>
+                    </div>
 
-            <div class="title">
-                <b>Welcome to Convert Master!</b>
-            </div>
+                    <div class="text">
+                        <span>Your Online Type Conversion Friend.</span>
+                    </div>
 
-            <div class="text">
-                <span>Your Online Type Conversion Friend.</span>
-            </div>
+                </div> 
 
-        </div> 
+            </header>
 
-    </header>
-
+        </section>
+    
 
     <!-- section2 about convertmaster  -->
 
 
-    <!-- <section  class="about_cm"> -->
+    <section  class="about_cm">
         <div class="img_logo">
             <img src="../media/images/navbar_logo.png" class="logo img img-responsive img-rounded" alt="Convert Master">
         </div>
@@ -56,7 +61,7 @@
             
             <p>
                 
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse aliquam debitis dolorem commodi deserunt ullam, blanditiis ut optio iure. Consequuntur voluptatum quia dolores, nam modi nobis, eum esse inventore sed recusandae ex quisquam neque ea minus eius consequatur dignissimos facilis soluta ducimus perferendis, officiis suscipit porro reprehenderit. Provident dolores quod cum error, numquam fugit exercitationem mollitia molestias ipsum? Eum, at!
+                    Convert Master is a free online file converter which can be used for the following conversion:- XML to JSON,XML to CSV,JSON to XML ,JSON to CSV,CSV to JSON,CSV to JSON. Convert Master can also be used for downloading the converted file and also to preview the converted file on the go. Registered Users can also view and download all of their converted files after a secure login
         
             </p>
         
@@ -68,11 +73,11 @@
         </div>
         
     
-    <!-- </section> -->
+    </section>
     
     <!-- services provided by convert master-->
         
-    <!-- <section class="services"> -->
+    <section class="services">
 
         <div class="container grid-3">
             <div>
@@ -91,13 +96,17 @@
             </div>
         </div>
 
-    <!-- </section> -->
+    </section>
 
 <footer class="center">
 
     <p>ConvertMaster &copy; 2018</p>
 
 </footer>
+<script>
+    $('#fullpage').fullpage();
+</script>
+</div>
 </div>
 </body>
 </html>
