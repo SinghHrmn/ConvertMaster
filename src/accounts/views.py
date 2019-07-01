@@ -61,7 +61,7 @@ def login_user(request):
             messages.success(request,"You are logged in")
             return HttpResponseRedirect("/convert/dashboard")
         else:
-            messages.error(request,"Enter valid username and password")
+            messages.error(request,"Enter valid username or password")
             return HttpResponseRedirect("/convert/login_user")
 
     return render(request,"accounts/login_user.html")

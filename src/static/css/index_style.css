@@ -53,14 +53,14 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-/* .about_cm{
+.about_cm{
     background-color: black;
     color: lightblue;
     text-align: center;
     transition: all 1000ms;
-    position: absolute;
+    
 
-} */
+}
 
 .logo{
     height: 300px;
@@ -68,14 +68,15 @@ body{
     margin-left: 30%;
 }
 
-/* .cm_lines{
+.cm_lines{
 
     margin-top: 1rem;
     line-height: 1.7;
     font-size: 2.5rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: justify;
-} */
+    color: azure;
+}
 
 .img_logo{
     background-color:#ffe6ff; 
@@ -91,3 +92,49 @@ p{
     font-size: larger;
     padding-top: 60px;
 }
+
+.tiles{
+
+    background-color:white;
+    margin: 0px 0px 0px 88px;
+    width: 340px;
+    height: 85px;
+    border-radius: 15px ;
+    padding: 10px;
+}
+
+
+.tile_row{
+
+    height: 100px;
+    margin-left: 60px;
+    margin-top:20px;
+
+}
+.tiles:hover {
+    background-color: #337ab7;
+    color:white;
+  }
+
+.tile_row .convert_links{
+    text-align: center;
+    
+}
+
+.services_header{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    width: 239px;
+    height: 77px;
+    background-color: #337ab7;
+    color: white;
+    margin-left: 40.6%;
+    margin-top: 30px;
+    padding: 1px 0px 10px 0px;
+}
+
+.services_rows{
+
+    padding: 50px 0px 0px 0px;
+}
+
