@@ -1,10 +1,12 @@
 from django.contrib import admin
 from django.urls import path,include
-from accounts import urls as myaccounturls
+
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('convert/',include(myaccounturls),name="blog")
+    path('account/',include('accounts.urls'),name="blog"),
+    path('',include('convertEngine.urls'),name="convert")
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

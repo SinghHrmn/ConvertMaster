@@ -44,7 +44,7 @@
 
 <style>
 
-nav {
+/* nav {
 
   width: 100%;
   background-color:#060613;
@@ -62,7 +62,7 @@ ul{
 li{
   float: left;
   margin-left:0.5px;
-}
+} */
 
 #logo{
 
@@ -74,7 +74,10 @@ li{
   margin-left: 5px;
 
 }
-nav a{
+.navbar-header{
+  background-image: url('../media/images/main_navbar_logo.png');
+}
+/* nav a{
 
   width:100px;
   display: block;
@@ -88,8 +91,9 @@ nav a{
 nav a:hover{
 
     text-transform: uppercase;
-    transition: 0.5s;
-}
+    transition: 0.5s; 
+}*/
+
 
 
 
@@ -104,8 +108,10 @@ nav a:hover{
 </div> -->
 <nav class="nav navbar nav-pills">
   <ul class="nav navbar-nav">
-    
-    <li><a href="/convert/"><i>CM</i><img id="logo" src="../media/images/logo_short.png"></a></li>
+    <div class="navbar-header">
+        <a class='navbar-brand' href="{% url 'landing_page' %}"></a>
+    </div>
+    <!-- <li><a href="/convert/"><img id="logo" src="../media/images/main_navbar_logo.png"></a></li> -->
     <li><a href="/convert/">Home</a></li>
     <li><a href="#">Services</a></li>
     <li><a href="#">About</a></li>
