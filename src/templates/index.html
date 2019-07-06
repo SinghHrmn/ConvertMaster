@@ -6,29 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Convert Master</title>
-    <script src="{% static 'jquery-3.3.1.min.js' %}" ></script>
-    <script src="{% static 'jquery-validation-1.17.0/dist/jquery.validate.js' %}" ></script>
-
-    <link href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.css'  %}" rel="stylesheet" >
+    <!-- <script src="{% static 'jquery-3.3.1.min.js' %}" ></script> -->
     <script src="{% static 'main.js' %}" rel='stylesheet'></script>
-    <script src="{% static 'jquery.fullpage.min.js' %}" rel='stylesheet'></script>
+    <!-- <script src="{% static 'jquery.fullpage.min.js' %}" rel='stylesheet'></script>
+    <script src="{% static 'jquery-validation-1.17.0/dist/jquery.validate.js' %}" ></script>
+    <link href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.css'  %}" rel="stylesheet" > -->
+   <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
 
     <link rel="stylesheet" href="{% static 'css/index_style.css' %}">
     
 </head>
 
 <body style="margin: 0px; padding:0px">
-    <div id="fullpage">
+    
+     <!-- navigation bar -->
+     {% include 'partials/navbar.html' %}
+
+    <div id="fullpage" class="container-fluid">
         <section>
             <div class="container-fluid">
-            <!-- navigation bar -->
-            {% include 'partials/navbar.html' %}
 
 
             <!-- intropage -->
             <header class="showcase">
                 
-                <div class="content">
+                <div class="content img img-responsive">
 
                     <div class="title">
                         <b>Welcome to Convert Master!</b>
@@ -83,7 +93,7 @@
                 <h1>SERVICES</h1>
             </div>
             <div class="services_rows">
-                <div class="row tile_row">
+                <div class="row tile_row container">
                     <a href="#" class="convert_links">
                         <div class="col-sm-4 tiles">
                             <h3><i>XML TO CSV</i></h3>

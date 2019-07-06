@@ -46,7 +46,6 @@
 
 nav {
 
-  width: 100%;
   background-color:#060613;
   
 }
@@ -56,12 +55,12 @@ ul{
   margin:0 0 0 90px;
   padding:0px;
   list-style-type: none;
-  display: block
+  /* display: block */
 }
 
 li{
-  float: left;
-  margin-left:0.5px;
+  /* float: left;
+  margin-left:0.5px;  */
 }
 
 #logo{
@@ -81,6 +80,7 @@ nav a{
   padding: 20px,15px;
   text-decoration: none;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 15px;
   color: cyan;
   text-align: center;
 }
@@ -102,16 +102,25 @@ nav a:hover{
 <!-- <div class="logo navbar-header">
   <a href="/convert/"><img src="../media/images/navbar_logo.png"></a>
 </div> -->
-<nav class="nav navbar nav-pills">
-  <ul class="nav navbar-nav">
+<!-- <div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"> -->
+<nav class="nav navbar navbar-inverse nav-pills ">
+  
     
-    <li><a href="/convert/"><i>CM</i><img id="logo" src="../media/images/logo_short.png"></a></li>
+
+    <div class="navbar-header"><a href="/convert/"><i>CM</i><img id="logo" src="../media/images/logo_short.png"></a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul >
     <li><a href="/convert/">Home</a></li>
     <li><a href="#">Services</a></li>
     <li><a href="#">About</a></li>
     <li><a href="#">Documents</a></li>
-
   </ul>
+
+  </ul >
 
   {% if user.is_authenticated %}
     <ul class="nav navbar-nav navbar-right">
@@ -129,7 +138,13 @@ nav a:hover{
       <li class="active"><a href="/convert/register_user">Register</a></li>
       <li><a href="/convert/login_user">Login</a></li>
     </ul>
+  
 
   {% endif %}
+</div>
   
 </nav>
+<!-- </button>
+</div>
+  </div>
+   -->

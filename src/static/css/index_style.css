@@ -138,3 +138,33 @@ p{
     padding: 50px 0px 0px 0px;
 }
 
+/* small screens */
+
+/* @media (max-width:560px){
+
+    .showcase::after{
+        height: 50vh;
+    }
+
+    .content{
+        height: 200px;
+        top: 35%;
+        left: 58%;
+        margin-top: 105px;
+        margin-left: -290px;
+        width: 383px;
+    }
+
+    .content .text{
+        margin-top: 0.5rem;
+        line-height: 1;
+        font-size: 1.9rem;
+    }
+    .content .title{
+
+        font-size: 2.7rem;
+        margin-top: 0rem;
+    
+    }
+
+} */
