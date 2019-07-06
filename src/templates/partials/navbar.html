@@ -1,169 +1,53 @@
-<!-- 
-<div class="container-fluid" style="background-color:#001133">
-    <nav class="navbar">
-        <div class="container-fluid" style="padding: 0.5px 0px 0px 0px">
-          <div class="navbar-header" style="padding: 0.5px 2px 2px 0.5px">
-            <a class="navbar-brand" href="/convert/"><img src="../media/images/navbar_logo.png" style="height:50px;width:150px; padding: 0px 0px 0px 2px"></a>
-          </div>
-          <ul class="nav navbar-nav">
-            
-            <li><a href="#">ConvertFiles</a></li>            
-          </ul>
-          {% if user.is_authenticated %}
-              <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/convert/Dashboard">Welcome {{ user.username }}</a></li>
-                <li><a href="javascript:{document.getElementById('logout').submit()}">Logout</a>  </li>
-                <form method="POST" action="/convert/logout" id='logout'>
-                  {% csrf_token %}
-                  <input type="hidden" />
-                </form>
-              </ul>
-              
-          {% else %}
-                
-              <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/convert/register_user">Register</a></li>
-                <li><a href="/convert/login_user">Login</a></li>
-                
-              </ul>
-
-          {% endif %}
-
-          
-          <form class="navbar-form navbar-right" action="/action_page.php">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-        </div>
-    </nav>
-  </div>
-  
- -->
-
 <style>
 
-/* nav {
-
-  background-color:#060613;
-  
+.navbar_logo .navbar_logo_img{
+  height: 50px;
+  width: 205px;
+  margin-left: -15px;
+  padding: 0px;  
 }
 
-ul{
-
-  margin:0 0 0 90px;
-  padding:0px;
-  list-style-type: none;
-  /* display: block */
+.navbar{
+  background:#d83838;
 }
-
-li{
-<<<<<<< HEAD
-  /* float: left;
-  margin-left:0.5px;  */
-}
-=======
-  float: left;
-  margin-left:0.5px;
-} */
->>>>>>> c5bc78089f491387f1e65ebe5230e973f3b364b4
-
-#logo{
-
-  position: absolute;
-  height: 20px;
-  width:30px;
-  display: inline-block;
-  margin-top: 1.5px;
-  margin-left: 5px;
-
-}
-.navbar-header{
-  background-image: url('../media/images/main_navbar_logo.png');
-}
-/* nav a{
-
-  width:100px;
-  display: block;
-  padding: 20px,15px;
-  text-decoration: none;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 15px;
-  color: cyan;
-  text-align: center;
-}
-
-nav a:hover{
-
-    text-transform: uppercase;
-    transition: 0.5s; 
-}*/
-
-
-
 
 
 </style>
 
-
-
-
-<!-- <div class="logo navbar-header">
-  <a href="/convert/"><img src="../media/images/navbar_logo.png"></a>
-</div> -->
-<<<<<<< HEAD
-<!-- <div class="pos-f-t">
-    <div class="collapse" id="navbarToggleExternalContent">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"> -->
-<nav class="nav navbar navbar-inverse nav-pills ">
-  
-    
-
-    <div class="navbar-header"><a href="/convert/"><i>CM</i><img id="logo" src="../media/images/logo_short.png"></a>
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul >
-=======
-<nav class="nav navbar nav-pills">
-  <ul class="nav navbar-nav">
+<nav class="navbar navbar-inverse" >
+  <div class="container-fluid">
     <div class="navbar-header">
-        <a class='navbar-brand' href="{% url 'landing_page' %}"></a>
+      <button type="button" class="navbar-toggle nav" data-toggle="collapse" data-target="#myNavbar" style="color: black">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar_logo" href="/"><img src="../../media/images/navbar_logo.png" class="navbar_logo_img" alt="Convert Master"></a>
     </div>
-    <!-- <li><a href="/convert/"><img id="logo" src="../media/images/main_navbar_logo.png"></a></li> -->
->>>>>>> c5bc78089f491387f1e65ebe5230e973f3b364b4
-    <li><a href="/convert/">Home</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Documents</a></li>
-  </ul>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Services
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">XML to CSV</a></li>
+            <li><a href="#">XML to JSON</a></li>
+            <li><a href="#">JSON to XML</a></li>
+            <li><a href="#">JSON to CSV</a></li>
+            <li><a href="#">CSV to JSON</a></li>
+            <li><a href="#">CSV to XML</a></li>
 
-  </ul >
 
-  {% if user.is_authenticated %}
-    <ul class="nav navbar-nav navbar-right">
-      <li class="active"><a href="/convert/Dashboard">Welcome {{ user.username }}</a></li>
-      <li><a href="javascript:{document.getElementById('logout').submit()}">Logout</a>  </li>
-      <form method="POST" action="/convert/logout" id='logout'>
-        {% csrf_token %}
-        <input type="hidden" />
-      </form>
-    </ul>
-              
-  {% else %}
-                
-    <ul class="nav navbar-nav navbar-right">
-      <li class="active"><a href="/convert/register_user">Register</a></li>
-      <li><a href="/convert/login_user">Login</a></li>
-    </ul>
-  
-
-  {% endif %}
-</div>
-  
-</nav>
-<!-- </button>
-</div>
+          </ul>
+        </li>
+        <li class="active"><a href="#">Documentation</a></li> 
+        <li class="active"><a href="#">API</a></li> 
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/account/register_user"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li class="active"><a href="/account/login_user" style="margin-right: -15px; "><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
   </div>
-   -->
+</nav>

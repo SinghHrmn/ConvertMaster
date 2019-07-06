@@ -1,170 +1,96 @@
-body{
-
-    margin: 0;
-    font-family: sans-serif;
-    background-color:#060613;
-   
-}
-
-.showcase::after{
-
-    content:'' ;
-    height: 100vh;
+  #showcase_img{
+    background-image: url('../../media/images/thomas-lefebvre-gp8BLyaTaA0-unsplash.jpg');
+    height: 91.5vh;
     width: 100%;
-    background-image: url(../../media/images/background_img.jpg);
-    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    display: block;
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-    transition: all 1000ms;
-}
-
-
-.content{
-
-    position: absolute;
-    z-index: 1;
-    top: 35%;
-    left: 50%;
-    margin-top: 105px;
-    margin-left: -290px;
-    width:643px;
-    height: 350px;
-    text-align: center;
-    transition: all 1000ms;
-    color:#fffd82;
-    
-}
-
-.content .title{
-
-    font-size: 4rem;
-    margin-top: -2rem;
-
-}
-
-.content .text{
-
-    margin-top: 1rem;
-    line-height: 1.7;
-    font-size: 2.5rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.about_cm{
-    background-color: black;
-    color: lightblue;
-    text-align: center;
-    transition: all 1000ms;
-    
-
-}
-
-.logo{
-    height: 300px;
-    width: 592px;
-    margin-left: 30%;
-}
-
-.cm_lines{
-
-    margin-top: 1rem;
-    line-height: 1.7;
-    font-size: 2.5rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: justify;
-    color: azure;
-}
-
-.img_logo{
-    background-color:#ffe6ff; 
-}
-
-#fullpage {
-    height: 100vh;
-    overflow: hidden;
-}
-
-#fullpage section { height: 100vh; }
-p{
-    font-size: larger;
-    padding-top: 60px;
-}
-
-.tiles{
-
-    background-color:white;
-    margin: 0px 0px 0px 88px;
-    width: 340px;
-    height: 85px;
-    border-radius: 15px ;
-    padding: 10px;
-}
-
-
-.tile_row{
-
-    height: 100px;
-    margin-left: 60px;
-    margin-top:20px;
-
-}
-.tiles:hover {
-    background-color: #337ab7;
-    color:white;
+    background-size: cover;
+    margin-top: 0px;
   }
 
-.tile_row .convert_links{
-    text-align: center;
-    
-}
+  .main_intro_row{
+    margin-top: -20px;
+  }
 
-.services_header{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
-    width: 239px;
-    height: 77px;
-    background-color: #337ab7;
-    color: white;
-    margin-left: 40.6%;
-    margin-top: 30px;
-    padding: 1px 0px 10px 0px;
-}
+  .title_subhead{
 
-.services_rows{
+    margin-top: 33vh;
+  }
 
-    padding: 50px 0px 0px 0px;
-}
+  .title{
+    color: white; 
+    font-size: 50px;
+  }
 
-/* small screens */
+  .subhead{
 
-/* @media (max-width:560px){
+    color: white; 
+    font-size: 30px;
+  }
 
-    .showcase::after{
-        height: 50vh;
+
+  .container-fluid .services_header{
+
+    margin-top: 30px; 
+    margin-bottom:30px;
+    background-color:#d83838;
+  }
+
+  #footer a{
+    text-decoration: none;
+    color: whitesmoke;
     }
+  #footer h4{
+      color: aqua;
+  }
+  #footer a:hover{
+    color:maroon;
+  }
 
-    .content{
-        height: 200px;
-        top: 35%;
-        left: 58%;
-        margin-top: 105px;
-        margin-left: -290px;
-        width: 383px;
-    }
+  .services_header .service_button{
 
-    .content .text{
-        margin-top: 0.5rem;
-        line-height: 1;
-        font-size: 1.9rem;
-    }
-    .content .title{
+    padding-top: 50px;
+  }
 
-        font-size: 2.7rem;
-        margin-top: 0rem;
-    
-    }
+  #service_button{
 
-} */
+    padding-top: 20px;
+  }
+  .service_button .btn a{
+    background-color: black;
+
+  }
+
+  .service_button .buttons_links{
+
+    width: 100%;
+    margin-top:10px;
+  }
+
+  .footer_main{
+    background-color: black;    
+    margin-top: 116px;
+    padding-top: 25px;
+  }
+
+  .services_hr{
+
+    color: blue;
+  }
+
+  .help_hr{
+    color: yellow;
+  }
+
+  contact_hr{
+    background-color: green;
+  }
+
+
+
+
+
+
+
+
+

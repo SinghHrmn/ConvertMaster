@@ -3,11 +3,11 @@ from .views import *
 
 urlpatterns=[
 
-    path("register_user",register_user),
-    path("",index),
-    path("login_user",login_user),
-    path('dashboard',dashboard),
-    path('logout',logout)
+    path('register_user', register_user, name='register'),
+    path('',index),
+    path('login_user', login_user, name='login'),
+    path('dashboard', dashboard, name='dashboard'),
+    path('logout', logout, name='logout')
 
 
 ]

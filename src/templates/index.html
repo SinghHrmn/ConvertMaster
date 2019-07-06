@@ -5,214 +5,187 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Convert Master</title>
-    <!-- <script src="{% static 'jquery-3.3.1.min.js' %}" ></script> -->
-    <script src="{% static 'main.js' %}" rel='stylesheet'></script>
-    <!-- <script src="{% static 'jquery.fullpage.min.js' %}" rel='stylesheet'></script>
-    <script src="{% static 'jquery-validation-1.17.0/dist/jquery.validate.js' %}" ></script>
-    <link href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.css'  %}" rel="stylesheet" > -->
-   <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Main</title>
     
+    <!-- Latest compiled and minified CSS -->
+   <link href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.min.css' %}" rel="stylesheet">
 
+    <!-- jQuery library -->
+    <script src="{% static 'jquery-3.3.1.min.js'  %}" rel='stylesheet'></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="{% static 'bootstrap-3.4.1-dist/js/bootstrap.min.js' %}" rel='stylesheet' ></script>
+    
+    <!-- css file -->
     <link rel="stylesheet" href="{% static 'css/index_style.css' %}">
-    
 </head>
-
-<body style="margin: 0px; padding:0px">
-    
-     <!-- navigation bar -->
-     {% include 'partials/navbar.html' %}
-
-    <div id="fullpage" class="container-fluid">
-        <section>
-            <div class="container-fluid">
-
-
-            <!-- intropage -->
-            <header class="showcase">
-                
-                <div class="content img img-responsive">
-
-                    <div class="title">
-                        <b>Welcome to Convert Master!</b>
-                    </div>
-
-                    <div class="text">
-                        <span>Your Online Type Conversion Friend.</span>
-                    </div>
-
-                </div> 
-
-            </header>
-
-        </section>
-    
-
-    <!-- section2 about convertmaster  -->
-
-
-        <section  class="about_cm">
-            <div class="img_logo">
-                <img src="../media/images/navbar_logo.png" class="logo img img-responsive img-rounded" alt="Convert Master">
-            </div>
-            
-            <div class="col-sm-1">
-
-
-            </div>
-            <div class="col-sm-10 cm_lines">
-                
-                <p>
-                    
-                        Convert Master is a free online file converter which can be used for the following conversion:- XML to JSON,XML to CSV,JSON to XML ,JSON to CSV,CSV to JSON,CSV to JSON. Convert Master can also be used for downloading the converted file and also to preview the converted file on the go. Registered Users can also view and download all of their converted files after a secure login
-            
-                </p>
-            
-            </div>
-
-            <div class="col-sm-1">
-
-
-            </div>
-            
-        
-        </section>
-    
-    <!-- services provided by convert master-->
-        
-        <section class="services">
-            
-            <div class="services_header">
-                <h1>SERVICES</h1>
-            </div>
-            <div class="services_rows">
-                <div class="row tile_row container">
-                    <a href="#" class="convert_links">
-                        <div class="col-sm-4 tiles">
-                            <h3><i>XML TO CSV</i></h3>
-                        
-                        </div>
-                    </a>
-
-                    <a href="#" class="convert_links">
-                        <div class="col-sm-4 tiles">
-                            <h3><i>XML TO JSON</i></h3> 
-                        
-                        </div>
-                    </a>
-
-                    <a href="#" class="convert_links">
-                        <div class="col-sm-4 tiles">
-                            <h3><i>JSON TO XML</i></h3> 
-                    
-                        </div>
-                    </a> 
-                </div>
-
-
-                <div class="row tile_row">
-                    <a href="#" class="convert_links">
-                        <div class="col-sm-4 tiles">
-                            <h3><i>JSON TO CSV</i></h3>
-                        </div>
-                    </a>
-                        
-                
-                    <a href="#" class="convert_links">
-                    <div class="col-sm-4 tiles">
-                        <h3><i>CSV TO XML</i></h3> 
-                        
-                    </div>
-                    </a>
-            
-                    <a href="#" class="convert_links">
-                    <div class="col-sm-4 tiles">
-                        <h3><i>CSV TO JSON</i></h3>  
-                        
-                    </div>
-                    </a>
-                </div>
-            </div>
-
-
-            <footer style="margin-top:-30px; height:40%">
-                    <div class="row" >
-                       <div class="container-fluid">
-                       <a href=""><p style="color: lightslategrey;text-align: center">Back To Top</p></a><hr style="border-top: 1px solid lightslategrey">
-                       </div>
-                   </div> 
-                   <div class="row">
-                       <div class="container">
-                           <div class="col-md-3" style="padding-top: 15px;padding-bottom: 0px">
-                               <h4 style="color: lightgray">About</h4>
-                               <hr style="border-top: 1px solid red">
-                               <a class="text-muted" href="">Contact Us</a><br>
-                               <a  class="text-muted" href="">About Us</a><br>
-    
-               
-                           </div>
-                           <div class="col-md-3" style="padding-top: 15px;padding-bottom: 0px">
-                               <h4 style="color: lightgray">Help</h4>
-                               <hr style="border-top: 1px solid yellow">
-                               <a  class="text-muted" href="">FAQ</a><br>
-                               <a  class="text-muted" href="">Example Codes</a><br>
-               
-                           </div>
-                           <div class="col-md-3" style="padding-top: 15px;padding-bottom: 0px">
-                               <h4 style="color: lightgray">Services</h4>
-                               <hr style="border-top: 1px solid green">
-                               <a  class="text-muted" href="">XML TO JSON</a><br>
-                               <a  class="text-muted" href="">XML TO CSV</a><br>
-                               <a  class="text-muted" href="">CSV TO XML</a><br>
-                               <a  class="text-muted" href="">CSV TO JSON</a><br>
-                               <a  class="text-muted" href="">JSON TO CSV</a><br>
-                               <a  class="text-muted" href="">JSON TO XML</a><br>
-               
-                           </div>
-                           <div class="col-md-3" style="padding-top: 15px;padding-bottom: 0px">
-                               <!-- <h4 style="color: lightgray">Social</h4>
-                               <hr style="border-top: 1px solid blue">
-                               <a  class="text-muted" href="">Facebook</a><br>
-                               <a  class="text-muted" href="">Instagram</a><br>
-                               <a  class="text-muted" href="">Twitter</a>
-                -->
-                           </div>
-                       </div>
-                   </div>
-                   <div class="row">
-                       <div class="container">
-                           <div>
-                           </div>
-                       </div>
-                   </div>
-                   <div style="padding-top:0px">
-                       <div class="container-fluid">
-                           <p class="text-center text-muted"><strong>ConvertMaster | Made With <span style="color: darkred" class="glyphicon glyphicon-heart"></span> in India</strong></p>
-                       </div>
-                   </div>
-               </footer>
-            
-
-        </section>
-
-
-    
-
-
-        
+<body>
+  <!-- Navbar -->
+  {% include 'partials/navbar.html' %}
+ 
+  <div class="container-fluid">
+     <!-- Showcase area -->
+    <div class="row main_intro_row">
+      <div class="col-md-12" id="showcase_img">
+        <div class="row">
+          <div class="col-md-offset-3 col-md-6 col-md-offset-3 title_subhead" >
+            <h1 class="text-center title">Welcome To Convert Master</h1>
+            <h4 class="text-center subhead">Your Online Type Conversion Friend</h4>
+          </div> 
+        </div>
+      </div>
     </div>
-    <script>
-            $('#fullpage').fullpage();
-    </script>
+    <!-- About Us  -->
+    <div class="row container-fluid">
+        <div class="col-md-offset-1 col-md-2 col-sm-offset-4 col-sm-4 col-sm-onset-4 col-xs-offset-4 col-xs-4 col-xs-onset-4">  
+          <img class="img img-responsive" src="../media/images/cm_logo.png" alt="Convert Master" style="height: 200px;
+          width: 195px;
+          margin: 10% 0%;
+          box-sizing: border-box;">
+        </div>
+        <div class="col-md-8 col-md-onset-1 col-sm-offset-1 col-sm-10 col-sm-onset-1 " style="background: darkgrey;height: 50vh">
+          
+            <div class="row">
+              <h1 class="text-center">About Us</h1>
+            </div>
+            <div class="row" style="height: 100% ; margin: 0% 1%;" >
+              <p class="bg-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quo beatae consequatur 
+                veritatis mollitia iste praesentium, facilis inventore dolores magnam exercitationem. Exercitationem, quasi suscipit itaque autem provident minima perspiciatis. 
+                Rem! Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur accusantium fugit sed reiciendis vero 
+                iusto perferendis modi quibusdam ut velit eligendi libero explicabo nam quas facilis nulla, 
+                dolor rem
+              </p>
+            </div>
+        </div>
+    </div>
+  
+
+    <!-- Services -->
+
+    <div class="row services_header container-fluid" >
+      <div class="col-md-offset-4 col-md-4 col-md-onset-4">
+        <h1 class="text-center ">Services</h1>
+      </div>
+    </div>
+    <div class="container service_button" id="service_button" >
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                  <div class="col-md-offset-1 col-md-10 col-md-onset-1">
+                      <a class="btn btn-success text-center btn-lg buttons_links" href="#" > XML to CSV</a>
+                  </div>
+                  
+                </div>
+            </div>
+          <div class="col-md-4">
+            <div class="row">
+              
+              <div class="col-md-offset-1 col-md-10 col-md-onset-1">
+                  <a class="btn btn-success text-center btn-lg buttons_links" href="#" > XML to CSV</a>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              
+              <div class="col-md-offset-1 col-md-10 col-md-onset-1" >
+                <a class="btn btn-success text-center btn-lg buttons_links" href="#"> XML to CSV</a>
+              </div>
+              
+            </div>
+          </div>
+          
+    
+        </div>
+
+    </div>
+    
+    <div class="container service_button">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="row">
+              
+              <div class="col-md-offset-1 col-md-10 col-md-onset-1" >
+                  <a class="btn btn-success text-center btn-lg buttons_links" href="#" > XML to CSV</a>
+              </div>
+              
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+          
+            <div class="col-md-offset-1 col-md-10 col-md-onset-1">
+                <a class="btn btn-success text-center btn-lg buttons_links" href="#" > XML to CSV</a>
+            </div>
+          
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+          
+            <div class="col-md-offset-1 col-md-10 col-md-onset-1  ">
+              <a class="btn btn-success text-center btn-lg buttons_links" href="#"> XML to CSV</a>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    
+      
+
+    </div>
+  </div>
+  <!-- footer -->
+  <div class="container-fluid footer_main">
+    <div class="container">
+      <div class="row" id="footer">
+        <div class="col-md-offset-1 col-md-2">
+          <h4>Services</h4> 
+          <hr class="services_hr">
+          <ul class="list-unstyled">
+            <a href="">XML to JSON</a><br>
+            <a href="">XML to JSON</a><br>
+            <a href="">XML to JSON</a><br>
+            <a href="">XML to JSON</a><br>
+            <a href="">XML to JSON</a><br>
+            <a href="">XML to JSON</a><br>
+
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Help</h4> 
+          <hr class="help_hr">
+          <ul class="list-unstyled">
+              <a href="">Documentation</a><br>
+              <a href="">FAQs</a><br>
+              <a href="">API</a><br>
+          </ul>
+        </div>
+        <div class="col-md-2 col-onset-3">
+          <h4>Contact</h4>
+          <hr class="contact_hr" >
+          <ul class="list-unstyled">
+              <a href="">Contact Us</a>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h5 class="text-center">Made with <span class="text-danger">love</span> by team D'Coders | <span class="text-danger">Convert Master</span></h5>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+    
 </body>
 </html>
+
+
+
+
+
 
 
 
