@@ -44,7 +44,7 @@
 
 <style>
 
-nav {
+/* nav {
 
   background-color:#060613;
   
@@ -59,9 +59,15 @@ ul{
 }
 
 li{
+<<<<<<< HEAD
   /* float: left;
   margin-left:0.5px;  */
 }
+=======
+  float: left;
+  margin-left:0.5px;
+} */
+>>>>>>> c5bc78089f491387f1e65ebe5230e973f3b364b4
 
 #logo{
 
@@ -73,7 +79,10 @@ li{
   margin-left: 5px;
 
 }
-nav a{
+.navbar-header{
+  background-image: url('../media/images/main_navbar_logo.png');
+}
+/* nav a{
 
   width:100px;
   display: block;
@@ -88,8 +97,9 @@ nav a{
 nav a:hover{
 
     text-transform: uppercase;
-    transition: 0.5s;
-}
+    transition: 0.5s; 
+}*/
+
 
 
 
@@ -102,6 +112,7 @@ nav a:hover{
 <!-- <div class="logo navbar-header">
   <a href="/convert/"><img src="../media/images/navbar_logo.png"></a>
 </div> -->
+<<<<<<< HEAD
 <!-- <div class="pos-f-t">
     <div class="collapse" id="navbarToggleExternalContent">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"> -->
@@ -114,6 +125,14 @@ nav a:hover{
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul >
+=======
+<nav class="nav navbar nav-pills">
+  <ul class="nav navbar-nav">
+    <div class="navbar-header">
+        <a class='navbar-brand' href="{% url 'landing_page' %}"></a>
+    </div>
+    <!-- <li><a href="/convert/"><img id="logo" src="../media/images/main_navbar_logo.png"></a></li> -->
+>>>>>>> c5bc78089f491387f1e65ebe5230e973f3b364b4
     <li><a href="/convert/">Home</a></li>
     <li><a href="#">Services</a></li>
     <li><a href="#">About</a></li>
