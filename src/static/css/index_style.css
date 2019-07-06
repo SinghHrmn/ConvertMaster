@@ -1,3 +1,11 @@
+body {
+  margin: 0;
+  background-color: #f4ece6;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}  
+  
+  
   #showcase_img{
     background-image: url('../../media/images/thomas-lefebvre-gp8BLyaTaA0-unsplash.jpg');
     height: 91.5vh;
@@ -34,6 +42,7 @@
     margin-top: 30px; 
     margin-bottom:30px;
     background-color:#d83838;
+  
   }
 
   #footer a{
@@ -85,12 +94,4 @@
   contact_hr{
     background-color: green;
   }
-
-
-
-
-
-
-
-
 
