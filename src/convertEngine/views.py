@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import *
 
 # Create your views here.
 
@@ -25,3 +26,7 @@ def jsonToXml(request):
 
 def documentation(request):
     return render(request, 'convertEngine/doc.html')
+
+@login_required
+def myconversions(request):
+    return render(request,'convertEngine/myconversions.html')

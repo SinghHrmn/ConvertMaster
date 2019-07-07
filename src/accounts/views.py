@@ -59,16 +59,12 @@ def login_user(request):
         if user is not None:
             auth.login(request,user)
             messages.success(request,"You are logged in")
-            return HttpResponseRedirect("/account/dashboard")
+            return HttpResponseRedirect("/")
         else:
             messages.error(request,"Enter valid username or password")
             return HttpResponseRedirect(reverse('login'))
 
     return render(request,"accounts/login_user.html")
-
-@login_required
-def dashboard(request):
-    return render(request,"accounts/dashboard.html")
 
 def logout(request):
     if request.method=="POST":
