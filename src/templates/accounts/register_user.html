@@ -1,47 +1,83 @@
 {% extends "base.html" %}
 
-{% block head_title %} Register {% endblock %}
+{% block head-title %} Register {% endblock %}
 
 {% block content %}
     
     <div class="text-center jumbotron">
         <h2><b> Register Here </b> </h2>
     </div>
-    
+    <!-- Form div starts -->
     <div class="container-fluid">
 
-        <div class="col-sm-1">
-
-        </div>
-
-        <div class="col-sm-10 text-center">
+        <div class="col-sm-offset-1 col-sm-10 col-sm-onset-1 col-md-offset-4 col-md-4 col-md-onset-4 text-center">
             <div class="card-body">
                 <!--Alerts-->
                 {% include 'partials/_alerts.html' %}
-            
-            <form action="register_user" class="form-group" id="register_form" method="POST">
-                
-                {% csrf_token %}
-
-                <div class="form-group"> <label> <h4> <b> Enter the First Name </b> </h4> <input class=" form-control " type='text' name='first_name' data-rule-required="true" data-msg-required="This Field is required" /> </label> </div>
-                <div class="form-group"> <label> <h4> <b> Enter the Last Name </b> </h4> <input class=" form-control " type='text' name='last_name' data-rule-required="true" data-msg-required="This Field is required" /> </label> </div>
-
-                <div class="form-group"> <label> <h4> <b> Enter the User Name </b> </h4> <input class=" form-control " type='text' name='user_name' data-rule-required="true" data-msg-required="This Field is required" /> </label> </div>
-                <div class="form-group"> <label > <h4 ><b> Enter the Email  </b> </h4> <input class=" form-control " type='text' name='email'  data-rule-required="true" data-msg-required="This Field is required"  />  </label> </div>
-                <div class="form-group"> <label > <h4 ><b> Enter the Password  </b> </h4> <input class=" form-control " type='password' name='password'  data-rule-required="true" data-msg-required="This Field is required" />  </label> </div>
-                <div class="form-group"> <label > <h4 ><b> Confirm Password  </b> </h4> <input class=" form-control " type='password' name='confirm_password'  data-rule-required="true" data-msg-required="This Field is required" /> </label> </div>
-
-                <div class="form-group"> <input type="submit" class=" btn btn-success" value="Register" /> </div>
-            
-            </form>
-        
+                <!-- Register Form  Start-->
+                <form action="{% url 'register' %}" class="form-group" id="register_form" method="POST">
+                    
+                    {% csrf_token %}
+                    <!-- First Name -->
+                    <div class="form-group"> 
+                        <label> 
+                            <h4> 
+                                <b> Enter the First Name </b> 
+                            </h4> 
+                            <input class=" form-control " type='text' name='first_name' data-rule-required="true" data-msg-required="This Field is required" /> 
+                        </label> 
+                    </div>
+                    <!-- Last Name -->
+                    <div class="form-group"> 
+                        <label> 
+                            <h4> 
+                                <b> Enter the Last Name </b> 
+                            </h4> <input class=" form-control " type='text' name='last_name' data-rule-required="true" data-msg-required="This Field is required" /> 
+                        </label> 
+                    </div>
+                    <!-- User Name -->
+                    <div class="form-group"> 
+                        <label> 
+                            <h4> 
+                                <b> Enter the User Name </b> 
+                            </h4> 
+                            <input class=" form-control " type='text' name='user_name' data-rule-required="true" data-msg-required="This Field is required" /> 
+                        </label> 
+                    </div>
+                    <!-- Email -->
+                    <div class="form-group"> 
+                        <label > 
+                            <h4 >
+                                <b> Enter the Email  </b> 
+                            </h4> <input class=" form-control " type='text' name='email'  data-rule-required="true" data-msg-required="This Field is required"  />  
+                        </label> 
+                    </div>
+                    <!-- Password -->
+                    <div class="form-group"> 
+                        <label > 
+                            <h4 >
+                                <b> Enter the Password  </b> 
+                            </h4> 
+                            <input class=" form-control " type='password' name='password'  data-rule-required="true" data-msg-required="This Field is required" />  
+                        </label> 
+                    </div>
+                    <!-- Confirm Password -->
+                    <div class="form-group"> 
+                        <label > 
+                            <h4 >
+                                <b> Confirm Password  </b> 
+                            </h4> 
+                            <input class=" form-control " type='password' name='confirm_password'  data-rule-required="true" data-msg-required="This Field is required" /> 
+                        </label> 
+                    </div>
+                    <!-- Button -->
+                    <div class="form-group"> 
+                        <input type="submit" class=" btn btn-success" value="Register" /> 
+                    </div>
+                </form>
+                <!-- Form Ends -->
             </div>
         </div>
-
-        <div class="col-sm-1"> 
-
-        </div>
-
     </div>
-
+    <!-- Form Div Ends -->
 {% endblock %}

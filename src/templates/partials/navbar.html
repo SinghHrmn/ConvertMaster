@@ -49,9 +49,9 @@
         
         {% if user.is_authenticated %}
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href=""><span class="glyphicon glyphicon-user"></span>Welcome {{ user.username }}</a></li>
-            <li class="active"><a href="{% url 'myconversions' %}">YourConversions</a></li>            
-            <li class="active"><a href="javascript:{document.getElementById('logout').submit()}"><span class="glyphicon glyphicon-log-in"></span>Logout</a>  </li>
+            <li class="active"><a href=""><span class="glyphicon glyphicon-user"></span> Welcome {{ user.username }}</a></li>
+            <li class="active"><a href="{% url 'myconversions' %}">Your Conversions</a></li>            
+            <li class="active"><a href="javascript:{document.getElementById('logout').submit()}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>  </li>
             <form method="POST" action="{% url 'logout' %}" id='logout'>
               {% csrf_token %}
               <input type="hidden" />
