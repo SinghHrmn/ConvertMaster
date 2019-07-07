@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import *
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render
-
+from django.urls import reverse
 # from . models import Post
 from django.http import*
 from django.contrib import messages
@@ -29,11 +29,11 @@ def register_user(request):
         if password==confirm_password:
             if User.objects.filter(username=user_name).exists():
                 messages.error(request,"That username has already been used")
-                return HttpResponseRedirect("/blog/register_user")
+                return HttpResponseRedirect(reverse('register'))
             else:
                 if User.objects.filter(email=email).exists():
                     messages.error(request,"That email has already been used")
-                    return HttpResponseRedirect("/convert/register_user")
+                    return HttpResponseRedirect(reverse('register'))
         
                 else:
                     user = User.objects.create_user(first_name=first_name,last_name=last_name,
@@ -41,7 +41,7 @@ def register_user(request):
 
                     user.save()
                     messages.success(request,"You are now registered and can login")
-                    return HttpResponseRedirect("/convert/login_user")
+                    return HttpResponseRedirect(reverse('login'))
         else:
             messages.error(request,"Passwords do not match")
 
@@ -59,10 +59,10 @@ def login_user(request):
         if user is not None:
             auth.login(request,user)
             messages.success(request,"You are logged in")
-            return HttpResponseRedirect("/convert/dashboard")
+            return HttpResponseRedirect("/account/dashboard")
         else:
             messages.error(request,"Enter valid username or password")
-            return HttpResponseRedirect("/convert/login_user")
+            return HttpResponseRedirect(reverse('login'))
 
     return render(request,"accounts/login_user.html")
 
@@ -74,4 +74,4 @@ def logout(request):
     if request.method=="POST":
         auth.logout(request)
         messages.success(request,"You are logged out")
-        return HttpResponseRedirect("/convert/")
+        return HttpResponseRedirect(reverse('index'))

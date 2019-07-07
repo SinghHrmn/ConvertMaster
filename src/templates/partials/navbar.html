@@ -31,22 +31,29 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Services
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">XML to CSV</a></li>
-            <li><a href="#">XML to JSON</a></li>
-            <li><a href="#">JSON to XML</a></li>
-            <li><a href="#">JSON to CSV</a></li>
-            <li><a href="#">CSV to JSON</a></li>
-            <li><a href="#">CSV to XML</a></li>
+            <li><a href="{% url 'xml-csv' %}">XML to CSV</a></li>
+            <li><a href="{% url 'xml-json' %}">XML to JSON</a></li>
+            <li><a href="{% url 'json-xml' %}">JSON to XML</a></li>
+            <li><a href="{% url 'json-csv' %}">JSON to CSV</a></li>
+            <li><a href="{% url 'csv-json' %}">CSV to JSON</a></li>
+            <li><a href="{% url 'csv-xml' %}">CSV to XML</a></li>
 
 
           </ul>
         </li>
-        <li class="active"><a href="#">Documentation</a></li> 
+        <li class="active"><a href="{% url 'Doc' %}">Documentation</a></li> 
         <li class="active"><a href="#">API</a></li> 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="/account/register_user"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li class="active"><a href="/account/login_user" style="margin-right: -15px; "><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        
+        {% if user.is_authenticated %}
+          <li class="active"><a href="{% url 'dashboard' %}"><span class="glyphicon glyphicon-user"></span> Hi! {{user.username}}</a></li>
+          <li class="active"><a href="{% url 'logout'%}" style="margin-right: -15px; "><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        {% else %}
+          
+        <li class="active"><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li class="active"><a href="{% url 'login'%}" style="margin-right: -15px; "><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {% endif %}
       </ul>
     </div>
   </div>

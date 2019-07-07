@@ -49,11 +49,9 @@
               <h1 class="text-center">About Us</h1>
             </div>
             <div class="row" style="height: 100% ; margin: 0% 1%;" >
-              <p class="bg-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quo beatae consequatur 
-                veritatis mollitia iste praesentium, facilis inventore dolores magnam exercitationem. Exercitationem, quasi suscipit itaque autem provident minima perspiciatis. 
-                Rem! Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur accusantium fugit sed reiciendis vero 
-                iusto perferendis modi quibusdam ut velit eligendi libero explicabo nam quas facilis nulla, 
-                dolor rem
+              <p class="text-justify">Convert Master is a free open source online software that converts XML, CSV, JSON to each other. 
+                Convert Master is easy to use and powerful enough to handle a large amount of data. 
+                Its open source nature allows you to contribute and make it even more incredible. ( see <a href="#">Documentation</a> for help!)
               </p>
             </div>
         </div>
@@ -72,7 +70,7 @@
             <div class="col-md-4">
                 <div class="row">
                   <div class="col-md-offset-1 col-md-10 col-md-onset-1">
-                      <a class="btn btn-success text-center btn-lg buttons_links" href="#" > XML to CSV</a>
+                      <a class="btn btn-success text-center btn-lg buttons_links" href="{% url 'xml-json' %}" > XML to JSON</a>
                   </div>
                   
                 </div>
@@ -81,7 +79,7 @@
             <div class="row">
               
               <div class="col-md-offset-1 col-md-10 col-md-onset-1">
-                  <a class="btn btn-success text-center btn-lg buttons_links" href="#" > XML to CSV</a>
+                  <a class="btn btn-success text-center btn-lg buttons_links" href="{% url 'xml-csv' %}" > XML to CSV</a>
               </div>
               
             </div>
@@ -90,7 +88,7 @@
             <div class="row">
               
               <div class="col-md-offset-1 col-md-10 col-md-onset-1" >
-                <a class="btn btn-success text-center btn-lg buttons_links" href="#"> XML to CSV</a>
+                <a class="btn btn-success text-center btn-lg buttons_links" href="{% url 'json-xml' %}"> JSON to XML</a>
               </div>
               
             </div>
@@ -107,7 +105,7 @@
           <div class="row">
               
               <div class="col-md-offset-1 col-md-10 col-md-onset-1" >
-                  <a class="btn btn-success text-center btn-lg buttons_links" href="#" > XML to CSV</a>
+                  <a class="btn btn-success text-center btn-lg buttons_links" href="{% url 'json-csv' %}" > JSON to CSV</a>
               </div>
               
           </div>
@@ -116,7 +114,7 @@
           <div class="row">
           
             <div class="col-md-offset-1 col-md-10 col-md-onset-1">
-                <a class="btn btn-success text-center btn-lg buttons_links" href="#" > XML to CSV</a>
+                <a class="btn btn-success text-center btn-lg buttons_links" href="{% url 'csv-xml' %}" > CSV to XML</a>
             </div>
           
           </div>
@@ -125,7 +123,7 @@
           <div class="row">
           
             <div class="col-md-offset-1 col-md-10 col-md-onset-1  ">
-              <a class="btn btn-success text-center btn-lg buttons_links" href="#"> XML to CSV</a>
+              <a class="btn btn-success text-center btn-lg buttons_links" href="{% url 'csv-json' %}"> CSV to JSON</a>
             </div>
           
           </div>
@@ -145,11 +143,11 @@
           <hr class="services_hr">
           <ul class="list-unstyled">
             <a href="">XML to JSON</a><br>
-            <a href="">XML to JSON</a><br>
-            <a href="">XML to JSON</a><br>
-            <a href="">XML to JSON</a><br>
-            <a href="">XML to JSON</a><br>
-            <a href="">XML to JSON</a><br>
+            <a href="">XML to CSV</a><br>
+            <a href="">JSON to XML</a><br>
+            <a href="">JSON to CSV</a><br>
+            <a href="">CSV to JSON</a><br>
+            <a href="">CSV to XML</a><br>
 
           </ul>
         </div>
