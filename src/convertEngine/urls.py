@@ -4,6 +4,7 @@ from .views import *
 urlpatterns = [
     
     path('', index, name='landing_page'),
+    path('test/', test, name='landing_page'),
     path('convert/xml-to-json', xmlToJson, name='xml-json'),
     path('convert/xml-to-csv', xmlToCsv, name='xml-csv'),
     path('convert/csv-to-json', csvToJson, name='csv-json'),

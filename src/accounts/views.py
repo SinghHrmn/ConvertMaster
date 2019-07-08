@@ -2,18 +2,18 @@ from django.contrib.auth.decorators import *
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render
 from django.urls import reverse
-# from . models import Post
-from django.http import*
+import os
+from django.http import *
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
-
+from django.conf import settings
 # Create your views here.
 
 # def index(request):
 #     return render(request,"accounts/index.html")
 
 def index(request):
-    return render(request,"index.html")
+    return render(request, 'index.html')
 
 def register_user(request):
 
@@ -40,6 +40,7 @@ def register_user(request):
                     username=user_name,email=email,password=password)
 
                     user.save()
+                    os.mkdir(os.path.join(settings.MEDIA_ROOT, user_name))
                     messages.success(request,"You are now registered and can login")
                     return HttpResponseRedirect(reverse('login'))
         else:
@@ -58,6 +59,7 @@ def login_user(request):
         user= auth.authenticate(username=user_name,password=password)
         if user is not None:
             auth.login(request,user)
+            request.session['User'] = user_name
             messages.success(request,"You are logged in")
             return HttpResponseRedirect("/")
         else:
