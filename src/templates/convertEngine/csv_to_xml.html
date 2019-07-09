@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>xml-json</h1>
+<h1>csv-xml</h1>
+    <form action="{% url 'csv-xml' %}" method="post">
+        {% csrf_token %}
+        <label for="">CSV</label><br>
+        <textarea name="csv" id="" cols="30" rows="10"></textarea>
+    
+        {% comment %}
+        <label for="">JSON</label>
+        <textarea name="json" id="" cols="30" rows="10"></textarea>
+        {% endcomment %}
+            
+        <input type="submit" value="convert">
+    </form>
     
 {% endblock content %}

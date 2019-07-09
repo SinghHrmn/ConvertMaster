@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.decorators import *
 import os
+from datetime import datetime
 from django.conf import settings
 import pandas as pd
 import csv
@@ -18,14 +19,30 @@ def index(request):
 # -------------------------------XML-TO-JSON----------------------------------------------
 def xmlToJson(request):
     if request.method == 'POST':
-        with open('myData.xml') as fd:
+        # Retrieveing the post data
+        xml_data = request.POST['xml']
+        
+        #creating the file name based on time
+        filename = ""
+        name = datetime.now()
+        filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
+
+        # Writing the post data to the file
+        input_file_name = filename + '.xml'
+        saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
+        saved_file.write(xml_data)
+        saved_file.close()
+
+        output_file_name = filename + '.json'
+        with open('/media/'+ input_file_name) as fd:
             doc = xmltodict.parse(fd.read())
 
-        jsonFile = open('json_from_xml.json', 'w')
+        jsonFile = open(os.path.join(settings.MEDIA_ROOT, output_file_name), 'w')
         out = json.dumps(doc, indent=" ")
         jsonFile.write(out)
         pp = pprint.PrettyPrinter(indent=4)
         pp.pprint(json.dumps(doc))
+        return HttpResponse('<p>'+str(pp)+'</p>')
         
     else:
         return render(request,'convertEngine/xml_to_json.html')
@@ -47,28 +64,62 @@ def xmlToCsv(request):
 # -------------------------------CSV-TO-JSON----------------------------------------------
 def csvToJson(request):
     if request.method == 'POST':
-    
-        csvfile = open( 'test_file_Csv.csv', 'r' )  
+        # Retrieveing the post data
+        csv_data = request.POST['csv']
+        
+        #creating the file name based on time
+        filename = ""
+        name = datetime.now()
+        filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
+
+        # Writing the post data to the file
+        input_file_name = filename + '.csv'
+        saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
+        saved_file.write(csv_data)
+        saved_file.close()
+
+        # Converting the csv file to the json format
+        output_file_name = filename + '.json' 
+        csvfile = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'r' )  
         reader = csv.DictReader(csvfile)   
         out = json.dumps( [ row for row in reader ],indent=" " )
-        jsonfile = open( 'parsed.json', 'w')  
+        jsonfile = open(os.path.join(settings.MEDIA_ROOT, output_file_name), 'w')  
         jsonfile.write(out)
+        jsonfile.close()
+        return HttpResponse('<p>'+str(out)+'</p>')
     else:
         return render(request,'convertEngine/csv_to_json.html')
 
 # -------------------------------CSV-TO-XML----------------------------------------------
 def csvToXml(request):
     if request.method == 'POST':
-    
-        csvFile = 'test_file_Csv.csv'
-        xmlFile = 'myData.xml'
-
-        csvData = csv.reader(open(csvFile))
-        xmlData = open(xmlFile, 'w')
+        # Retrieveing the post data
+        csv_data = request.POST['csv']
+        # print('csv data recieved')
+        #creating the file name based on time
+        filename = ""
+        name = datetime.now()
+        filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
+        # print('filename created')
+        # print(filename)
+        # Writing the post data to the file
+        input_file_name = filename + '.csv'
+        saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
+        saved_file.write(csv_data)
+        saved_file.close()
+        print(input_file_name)
+        
+        output_file_name = filename + '.xml'
+        
+        
+        # csvData = csv.reader(open('/media/'+ input_file_name))
+        csvData = open('/media/'+input_file_name)
+        csvData = csv.reader(csvData)
+        xmlData = open(os.path.join(settings.MEDIA_ROOT, output_file_name), 'w')
         xmlData.write('<?xml version="1.0"?>' + "\n")
         # there must be only one top-level tag
         xmlData.write('<csv_data>' + "\n")
-
+        
         rowNum = 0
         for row in csvData:
             if rowNum == 0:
@@ -86,6 +137,7 @@ def csvToXml(request):
 
         xmlData.write('</csv_data>' + "\n")
         xmlData.close()
+        return HttpResponse('Conversion Done')
     else:
         return render(request,'convertEngine/csv_to_xml.html')
 
