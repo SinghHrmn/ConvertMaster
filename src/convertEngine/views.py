@@ -22,7 +22,7 @@ def xmlToJson(request):
         # Retrieveing the post data
         xml_data = request.POST['xml']
         
-        #creating the file name based on time
+        #creating the file name based on date and time
         filename = ""
         name = datetime.now()
         filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
@@ -33,16 +33,18 @@ def xmlToJson(request):
         saved_file.write(xml_data)
         saved_file.close()
 
+        # Converting XML to JSON
         output_file_name = filename + '.json'
-        with open('/media/'+ input_file_name) as fd:
+        
+        with open('media/'+ input_file_name) as fd:
             doc = xmltodict.parse(fd.read())
 
         jsonFile = open(os.path.join(settings.MEDIA_ROOT, output_file_name), 'w')
         out = json.dumps(doc, indent=" ")
         jsonFile.write(out)
-        pp = pprint.PrettyPrinter(indent=4)
-        pp.pprint(json.dumps(doc))
-        return HttpResponse('<p>'+str(pp)+'</p>')
+        # pp = pprint.PrettyPrinter(indent=4)
+        # pp.pprint(json.dumps(doc))
+        return HttpResponse('<p>'+ out +'</p>')
         
     else:
         return render(request,'convertEngine/xml_to_json.html')
@@ -50,14 +52,31 @@ def xmlToJson(request):
 # -------------------------------XML-TO-CSV----------------------------------------------
 def xmlToCsv(request):
     if request.method == 'POST':
-        with open('myData.xml') as fd:
+        # Retrieveing the post data
+        xml_data = request.POST['xml']
+        
+        #creating the file name based on date and time
+        filename = ""
+        name = datetime.now()
+        filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
+
+        # Writing the post data to the file
+        input_file_name = filename + '.xml'
+        saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
+        saved_file.write(xml_data)
+        saved_file.close()
+        
+        # Converting XML to CSV
+        output_file_name = filename + '.csv'
+        with open('media/' + input_file_name) as fd:
             doc = xmltodict.parse(fd.read())
         out = json.dumps(doc)
         data = json.loads(out)
 
         x = data['csv_data']['row']
         data_df = pd.DataFrame(x)
-        data_df.to_csv('output2.csv',index=False)
+        data_df.to_csv(os.path.join(settings.MEDIA_ROOT, output_file_name), index=False)
+        return HttpResponse('<p>' + data_df + '</p>')
     else:
         return render(request,'convertEngine/xml_to_csv.html')
 
@@ -113,7 +132,7 @@ def csvToXml(request):
         
         
         # csvData = csv.reader(open('/media/'+ input_file_name))
-        csvData = open('/media/'+input_file_name)
+        csvData = open('media/'+input_file_name)
         csvData = csv.reader(csvData)
         xmlData = open(os.path.join(settings.MEDIA_ROOT, output_file_name), 'w')
         xmlData.write('<?xml version="1.0"?>' + "\n")
@@ -144,22 +163,54 @@ def csvToXml(request):
 # -------------------------------JSON-TO-CSV----------------------------------------------
 def jsonToCsv(request):
     if request.method == 'POST':
-    
-        data_df = pd.read_json('parsed.json', orient='records')
-        data_df.to_csv('output.csv',index=False)
+        # Retrieveing the post data
+        json_data = request.POST['json']
+        
+        #creating the file name based on time
+        filename = ""
+        name = datetime.now()
+        filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
+
+        # Writing the post data to the file
+        input_file_name = filename + '.json'
+        saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
+        saved_file.write(json_data)
+        saved_file.close()
+
+        # Converting JSON to CSV
+        output_file_name = filename + '.csv'
+        data_df = pd.read_json('media/' + input_file_name, orient='records')
+        data_df.to_csv(os.path.join(settings.MEDIA_ROOT, output_file_name), index=False)
+
+        return HttpResponse('conversion Done')
     else:
         return render(request,'convertEngine/json_to_csv.html')
 
 # -------------------------------JSON-TO-XML----------------------------------------------
 def jsonToXml(request):
     if request.method == 'POST':
-    
-        data = open('json_from_xml.json', 'r').read()
+        # Retrieveing the post data
+        json_data = request.POST['json']
+        
+        #creating the file name based on time
+        filename = ""
+        name = datetime.now()
+        filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
+
+        # Writing the post data to the file
+        input_file_name = filename + '.json'
+        saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
+        saved_file.write(json_data)
+        saved_file.close()
+
+        # Converting JSON to XML
+        output_file_name = filename + '.xml'
+        data = open('media/' + input_file_name, 'r').read()
         data = json.loads(data)
 
-        out = open('xml_from_json.xml','w')
-
+        out = open(os.path.join(settings.MEDIA_ROOT, output_file_name), 'w')
         out.write(xmltodict.unparse(data, pretty=True))
+        return HttpResponse("<textarea>"+ str(xmltodict.unparse(data, pretty=True)) +"</textarea>")
     else:
         return render(request,'convertEngine/json_to_xml.html')
 

@@ -2,6 +2,18 @@
 
 {% block content %}
 <h1>xml-json</h1>
+    <form action="{% url 'xml-json' %}" method="post">
+        {% csrf_token %}
+        <label for="">XML</label><br>
+        <textarea name="xml" id="" cols="30" rows="10"></textarea>
+    
+        {% comment %}
+        <label for="">JSON</label>
+        <textarea name="json" id="" cols="30" rows="10"></textarea>
+        {% endcomment %}
+            
+        <input type="submit" value="convert">
+    </form>
     
 {% endblock content %}
     
