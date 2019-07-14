@@ -7,13 +7,16 @@ from django.http import *
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from django.conf import settings
+
+
+
 # Create your views here.
 
-# def index(request):
-#     return render(request,"accounts/index.html")
-
+# ===============================================================================================
 def index(request):
     return render(request, 'index.html')
+
+# ====================================Register User==============================================
 
 def register_user(request):
 
@@ -36,10 +39,12 @@ def register_user(request):
                     return HttpResponseRedirect(reverse('register'))
         
                 else:
+                    # Saving the User in the Database
                     user = User.objects.create_user(first_name=first_name,last_name=last_name,
                     username=user_name,email=email,password=password)
-
                     user.save()
+
+                    # Making Specified Directory for every User 
                     os.mkdir(os.path.join(settings.MEDIA_ROOT, user_name))
                     messages.success(request,"You are now registered and can login")
                     return HttpResponseRedirect(reverse('login'))
@@ -48,6 +53,7 @@ def register_user(request):
 
     return render(request,"accounts/register_user.html")
 
+# ======================================Login User===============================================
 
 def login_user(request):
 
@@ -68,6 +74,7 @@ def login_user(request):
 
     return render(request,"accounts/login_user.html")
 
+# ======================================Logout==================================================
 def logout(request):
     if request.method=="POST":
         auth.logout(request)
