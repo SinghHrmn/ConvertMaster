@@ -2,17 +2,36 @@
 
 {% block content %}
 <h1>csv-json</h1>
-<form action="{% url 'csv-json' %}" method="post">
+<form action="" method="post">
     {% csrf_token %}
     <label for="">CSV</label><br>
-    <textarea name="csv" id="" cols="30" rows="10"></textarea>
+    <textarea name="csv" id="input" cols="30" rows="10"></textarea>
 
-    {% comment %}
-    <label for="">JSON</label>
-    <textarea name="json" id="" cols="30" rows="10"></textarea>
-    {% endcomment %}
-        
-    <input type="submit" value="convert">
-</form>
     
+    <label for="">JSON</label>
+    <textarea name="json" id="output" cols="30" rows="10"></textarea>
+    
+        
+    <input type="button" onclick="csvtojson()" value="convert">
+</form> 
+<script>
+    function csvtojson(){
+        var data = new FormData();
+        var csv = document.getElementById('input').value;
+        var token = '{{ csrf_token }}'
+        data.append('csv', csv);
+        data.append('csrfmiddlewaretoken', token);
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function (){
+            if(this.readyState == 4 && this.status == 200){
+                var out = JSON.parse(this.response);
+            
+                document.getElementById('output').innerHTML = out['ans'];
+                
+            }
+        };
+        request.open('POST', "{% url 'csv-json' %}", true);
+        request.send(data);
+    }
+</script>
 {% endblock content %}
