@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.http import JsonResponse
 from django.contrib.auth.decorators import *
 import os
 from datetime import datetime
@@ -210,7 +211,13 @@ def jsonToXml(request):
 
         out = open(os.path.join(settings.MEDIA_ROOT, output_file_name), 'w')
         out.write(xmltodict.unparse(data, pretty=True))
-        return HttpResponse("<textarea>"+ str(xmltodict.unparse(data, pretty=True)) +"</textarea>")
+
+        # preparing JSON response data    
+        response = dict()
+        response['ans'] = str(xmltodict.unparse(data, pretty=True))
+        
+        # returning the JSON Response
+        return JsonResponse(response, safe=False)
     else:
         return render(request,'convertEngine/json_to_xml.html')
 
