@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.contrib.auth.decorators import *
 import os
@@ -11,6 +12,14 @@ import xmltodict
 import pprint
 import dicttoxml
 
+# ||+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+# ||                                                                                     ||
+# ||                                                                                     ||
+# ||                                                                                     ||
+# ||                                                                                     ||
+# ||                                                                                     ||
+# ||                                                                                     ||
+# ||+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
 
 # =========================renders the landing page======================================
 def index(request):
@@ -50,7 +59,8 @@ def xmlToJson(request):
         response = dict()
         response['ans'] = out
         
-        # Removing the intermediate files
+        # Removing the intermediate files if User is not Authenticated
+       
         os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
         os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
 
@@ -293,4 +303,6 @@ def test(request):
     y = open(os.path.join(settings.MEDIA_ROOT, 'file.txt'), 'w')
     y.write(x)
     y.close()
+    print(User.is_authenticated)
+    print(User.username)
     return HttpResponse('test done')
