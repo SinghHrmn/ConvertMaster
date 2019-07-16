@@ -5,11 +5,11 @@
     <form >
         {% csrf_token %}
         <label for="">JSON</label><br>
-        <textarea name="json" id="input" cols="30" rows="10"></textarea>
+        <textarea name="json" id="input" cols="30" rows="50"></textarea>
     
         
         <label for="">XML</label>
-        <textarea name="json" id="output" cols="30" rows="10"></textarea>
+        <textarea name="json" id="output" cols="30" rows="50"></textarea>
     
             
         <input type="button" onclick="jsontoxml()" value="convert">
@@ -18,9 +18,9 @@
     <script>
         function jsontoxml(){
             var data = new FormData();
-            var xml = document.getElementById('input').value;
+            var json = document.getElementById('input').value;
             var token = '{{ csrf_token }}'
-            data.append('json', xml);
+            data.append('json', json);
             data.append('csrfmiddlewaretoken', token);
             var request = new XMLHttpRequest();
             request.onreadystatechange = function (){

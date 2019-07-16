@@ -45,7 +45,17 @@ def xmlToJson(request):
         jsonFile.write(out)
         # pp = pprint.PrettyPrinter(indent=4)
         # pp.pprint(json.dumps(doc))
-        return HttpResponse('<p>'+ out +'</p>')
+              
+        # preparing JSON response data    
+        response = dict()
+        response['ans'] = out
+        
+        # Removing the intermediate files
+        os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
+        os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+
+        # returning the JSON Response
+        return JsonResponse(response, safe=False)
         
     else:
         return render(request,'convertEngine/xml_to_json.html')
@@ -77,7 +87,19 @@ def xmlToCsv(request):
         x = data['csv_data']['row']
         data_df = pd.DataFrame(x)
         data_df.to_csv(os.path.join(settings.MEDIA_ROOT, output_file_name), index=False)
-        return HttpResponse('<p>' + data_df + '</p>')
+
+        data_csv = open('media/'+ output_file_name).read()
+        
+        # preparing JSON response data    
+        response = dict()
+        response['ans'] = data_csv
+        
+        # Removing the intermediate files
+        os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
+        os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+
+        # returning the JSON Response
+        return JsonResponse(response, safe=False)
     else:
         return render(request,'convertEngine/xml_to_csv.html')
 
@@ -106,7 +128,17 @@ def csvToJson(request):
         jsonfile = open(os.path.join(settings.MEDIA_ROOT, output_file_name), 'w')  
         jsonfile.write(out)
         jsonfile.close()
-        return HttpResponse('<p>'+str(out)+'</p>')
+        
+        # preparing JSON response data    
+        response = dict()
+        response['ans'] = out
+        
+        # Removing the intermediate files
+        os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
+        os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+
+        # returning the JSON Response
+        return JsonResponse(response, safe=False)
     else:
         return render(request,'convertEngine/csv_to_json.html')
 
@@ -130,11 +162,10 @@ def csvToXml(request):
         print(input_file_name)
         
         output_file_name = filename + '.xml'
-        
-        
-        # csvData = csv.reader(open('/media/'+ input_file_name))
-        csvData = open('media/'+input_file_name)
-        csvData = csv.reader(csvData)
+
+        csvData = csv.reader(open('media/'+ input_file_name))
+        # csvData = open('media/'+input_file_name)
+        # csvData = csv.reader(csvData)
         xmlData = open(os.path.join(settings.MEDIA_ROOT, output_file_name), 'w')
         xmlData.write('<?xml version="1.0"?>' + "\n")
         # there must be only one top-level tag
@@ -157,7 +188,20 @@ def csvToXml(request):
 
         xmlData.write('</csv_data>' + "\n")
         xmlData.close()
-        return HttpResponse('Conversion Done')
+
+        data_xml = open('media/'+ output_file_name).read()
+        
+        # preparing JSON response data    
+        response = dict()
+        response['ans'] = data_xml
+        
+        # Removing the intermediate files
+        os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
+        os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+
+        # returning the JSON Response
+        return JsonResponse(response, safe=False)
+       
     else:
         return render(request,'convertEngine/csv_to_xml.html')
 
@@ -183,7 +227,18 @@ def jsonToCsv(request):
         data_df = pd.read_json('media/' + input_file_name, orient='records')
         data_df.to_csv(os.path.join(settings.MEDIA_ROOT, output_file_name), index=False)
 
-        return HttpResponse('conversion Done')
+        data_csv = open('media/'+ output_file_name).read()
+
+        # preparing JSON response data    
+        response = dict()
+        response['ans'] = data_csv
+        
+        # Removing the intermediate files
+        os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
+        os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+
+        # returning the JSON Response
+        return JsonResponse(response, safe=False)
     else:
         return render(request,'convertEngine/json_to_csv.html')
 

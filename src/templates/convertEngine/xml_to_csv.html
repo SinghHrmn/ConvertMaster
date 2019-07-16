@@ -5,14 +5,32 @@
     <form action="{% url 'xml-csv' %}" method="post">
         {% csrf_token %}
         <label for="">XML</label><br>
-        <textarea name="xml" id="" cols="30" rows="10"></textarea>
-    
-        {% comment %}
-        <label for="">JSON</label>
-        <textarea name="json" id="" cols="30" rows="10"></textarea>
-        {% endcomment %}
+        <textarea name="xml" id="input" cols="30" rows="10"></textarea>
+
+        <label for="">CSV</label>
+        <textarea name="json" id="output" cols="30" rows="10"></textarea>
+      
             
-        <input type="submit" value="convert">
+        <input type="button" onclick="xmltocsv()" value="convert">
     </form>
-    
-{% endblock content %}
+    <script>
+        function xmltocsv(){
+            var data = new FormData();
+            var xml = document.getElementById('input').value;
+            var token = '{{ csrf_token }}'
+            data.append('xml', xml);
+            data.append('csrfmiddlewaretoken', token);
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function (){
+                if(this.readyState == 4 && this.status == 200){
+                    var out = JSON.parse(this.response);
+                
+                    document.getElementById('output').innerHTML = out['ans'];
+                    
+                }
+            };
+            request.open('POST', "{% url 'xml-csv' %}", true);
+            request.send(data);
+        }
+    </script>
+{% endblock content %}  
