@@ -32,7 +32,7 @@
     {% endblock %}
     
 </head>
-<body>
+<body style="margin: 0px">
     {% include 'partials/navbar.html' %}
     <div class="container-fluid">
         
@@ -41,6 +41,11 @@
         {% endblock %}
 
     </div>
+
+    <footer>
+        {% block footer %}
+        {% endblock %}
+    </footer>
     
 </body>
 </html>

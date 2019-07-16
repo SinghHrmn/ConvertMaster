@@ -45,7 +45,7 @@ body {
   
   }
 
-  #footer a{
+  /* #footer a{
     text-decoration: none;
     color: whitesmoke;
     }
@@ -54,7 +54,7 @@ body {
   }
   #footer a:hover{
     color:maroon;
-  }
+  } */
 
   .services_header .service_button{
 
@@ -76,7 +76,7 @@ body {
     margin-top:10px;
   }
 
-  .footer_main{
+  /* .footer_main{
     background-color: black;    
     margin-top: 116px;
     padding-top: 25px;
@@ -93,5 +93,5 @@ body {
 
   contact_hr{
     background-color: green;
-  }
+  } */
 
