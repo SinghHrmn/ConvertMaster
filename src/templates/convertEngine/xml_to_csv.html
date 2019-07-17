@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head-title %}
+    XML-CSV
+{% endblock head-title %}
+
 {% block content %}
 <h1>xml-csv</h1>
     <form action="{% url 'xml-csv' %}" method="post">
