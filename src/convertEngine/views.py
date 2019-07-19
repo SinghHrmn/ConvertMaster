@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from django.http import * 
+from django.http import JsonResponse
 from django.contrib.auth.decorators import *
 import os
 from datetime import datetime
@@ -380,6 +380,9 @@ def test(request):
     y = open(os.path.join(settings.MEDIA_ROOT, 'file.txt'), 'w')
     y.write(x)
     y.close()
-    print(User.is_authenticated)
-    print(User.username)
-    return HttpResponse('test done')
+    filepath = '/media/kriti/201971863836316660.json'
+    filepath = '/media/images/logo_short.png'
+
+   
+    
+    return HttpResponse('<h1>Test Code</h1><a href=' + filepath + ' download>Click me to download</a>')
