@@ -60,8 +60,34 @@
                 </label><br>
                 <textarea name="json" id="output" cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width: 100%"></textarea>    
             </div>
-        
-        </form>
+            <div class="row">
+                <div class="col-xs-12 col-sm-offset-4 col-sm-8 col-sm-onset-0 col-md-offset-6 col-md-6">
+                    {% if user.is_authenticated or user.is_superuser%}
+                        <!-- Form for saving database from user -->
+                        <form action="{% url 'save' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" value="JSON" name='original'>
+                            <input type="hidden" value="XML" name='converted'>
+                            <input type="hidden" value='' id='filename' name='filename'>
+                            <input type="text" required="true" name='convName' placeholder="Enter Conversion Name">
+                        
+                        
+                        <!-- workable button only when user has login -->
+                        <input type="submit" class="btn btn-primary" value="Save conversion">
+                            
+                        </form>
+                        <a href="" class="btn btn-primary" id='download' download>Download</a>
+                        
+                    {% else %}
+                        <!-- non functionable bsutton -->
+                        <label for="">( Login is Required for saving the Conversion and downloading the code )</label>
+                        <input type="text" placeholder="Enter Conversion Name" disabled='disabled'>
+                        <button class="btn btn-primary" type="submit" disabled="disabled">Save Conversion</button>
+                        <input type="button" onclick="jsontoxml()" disabled='disabled' value="Download" class="text-center btn btn-primary">
+                    {% endif %}
+                    <input  type="button" onclick="jsontoxml()" value="Convert" class="text-center btn btn-danger">
+                </div>
+            </div>
     </div>
 </div>
 
@@ -173,11 +199,42 @@
                     var out = JSON.parse(this.response);
                 
                     document.getElementById('output').innerHTML = out['ans'];
+                    var link = '/media/'+ out['filename']+'.xml';
+                    document.getElementById('download').setAttribute('href',link)
+                    document.getElementById('filename').value = out['filename'];
                     
                 }
             };
             request.open('POST', "{% url 'json-xml' %}", true);
             request.send(data);
+        }
+        
+        function save(){
+            alert('Save Function called')
+            var data2 = new FormData();
+            var original = document.getElementById('original').value;
+            var converted = document.getElementById('converted').value;
+            var filename = document.getElementById('filename').value;
+            var convName = document.getElementById('ConvName').value;
+            
+            data2.append('original',original);
+            data2.append('converted',converted);
+            data2.append('filename',filename);
+            data2.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+        
+        
+            alert('Conversion Name Cannot be empty')
+        
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function (){
+                if(this.readyState == 4 && this.status == 200){
+                    var out = JSON.parse(this.response);
+                    alert('Saved Success')
+                    
+                }
+            };
+            request.open('POST', "{% url 'save' %}", true);
+            request.send(data2);
         }
     </script>
     

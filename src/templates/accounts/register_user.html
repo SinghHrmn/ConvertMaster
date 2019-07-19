@@ -11,7 +11,7 @@
     <div class="container-fluid">
 
         <div class="col-sm-offset-1 col-sm-10 col-sm-onset-1 col-md-offset-4 col-md-4 col-md-onset-4 text-center">
-            <div class="card-body">
+            <div class="card-body" style="border: 1px solid #d83838; border-radius: 25px;">
                 <!--Alerts-->
                 {% include 'partials/_alerts.html' %}
                 <!-- Register Form  Start-->
@@ -73,7 +73,8 @@
                     <!-- Button -->
                     <div class="form-group"> 
                         <input type="submit" class=" btn btn-success" value="Register" /> 
-                    </div>
+                        <h5>Already have an account? | <a href="{% url 'login' %}">Login</a> </h5>
+                    </div> 
                 </form>
                 <!-- Form Ends -->
             </div>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.http import JsonResponse
+from .models import MyConversion
 from django.contrib.auth.decorators import *
 import os
 from datetime import datetime
@@ -340,6 +341,7 @@ def jsonToXml(request):
         # preparing JSON response data    
         response = dict()
         response['ans'] = str(xmltodict.unparse(data, pretty=True))
+        response['filename'] = filename
         
         # Removing the intermediate files if User is not Authenticated
         if request.user.is_superuser or request.user.is_authenticated:
@@ -366,6 +368,17 @@ def jsonToXml(request):
 # # ==========================DOCUMENTATION================================================
 def documentation(request):
     return render(request, 'convertEngine/doc.html')
+
+# ====================shows previous convertions for logined users==========================
+def saveconversion(request):
+    if request.method == 'POST':
+        filename = request.POST['filename']
+        original = request.POST['original']
+        converted = request.POST['converted']
+        convName = request.POST['convName']
+        conversion = MyConversion(user=request.user,filename=filename,original=original,converted=converted,convName=convName)
+        conversion.save()
+        return JsonResponse({'ans':'Consverion Success'}, safe=False)
 
 # ====================shows previous convertions for logined users==========================
 @login_required

@@ -11,3 +11,5 @@ class MyConversion(models.Model):
     original = models.CharField(max_length=4, choices=methods)
     converted = models.CharField(max_length=4, choices=methods)
     filename = models.CharField(max_length=20, unique=True)
+    convName = models.CharField(max_length=50)
+    

@@ -12,8 +12,8 @@
 <!-- Main Form -->
 <div class="container-fluid">
     
-    <div class=" col-sm-offset-1 col-sm-10 text-center col-sm-onset-1">
-        <div class="card-body">
+    <div class=" col-sm-offset-1 col-sm-10 text-center col-sm-onset-1 col-lg-offset-4 col-lg-4 col-lg-onset-4">
+        <div class="card-body" style="border: 1px solid #d83838; border-radius: 25px;">
             <!--Alerts-->
             {% include 'partials/_alerts.html' %}
             <!-- Login Form  -->
@@ -25,7 +25,7 @@
                         <h4> 
                             <b> Enter the User Name </b> 
                         </h4> 
-                        <input class=" form-control " type='text' name='user_name' data-rule-required="true" data-msg-required="This Field is required" /> 
+                        <input class=" form-control " type='text' placeholder="User Name" name='user_name' data-rule-required="true" data-msg-required="This Field is required" /> 
                     </label> 
                 </div>
                 <div class="form-group"> 
@@ -33,16 +33,18 @@
                         <h4 >
                             <b> Enter the Password  </b> 
                         </h4> 
-                        <input class=" form-control " type='password' name='password'  data-rule-required="true" data-msg-required="This Field is required" />  
+                        <input class=" form-control " placeholder="Password" type='password' name='password'  data-rule-required="true" data-msg-required="This Field is required" />  
                     </label> 
                 </div>
                 
                 <div class="form-group"> 
                     <input type="submit" class=" btn btn-success" value="Login" /> 
+                    <h5>Don't have an account? | <a href="{% url 'register' %}">Sign Up</a> </h5>
                 </div>
             
             </form>
             <!-- Login Form Ends -->
+
     
         </div>
     </div>
