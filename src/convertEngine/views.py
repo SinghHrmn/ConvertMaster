@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from django.http import JsonResponse
+from django.http import * 
 from django.contrib.auth.decorators import *
 import os
 from datetime import datetime
@@ -12,11 +12,20 @@ import pprint
 import dicttoxml
 
 
+
 # =========================renders the landing page======================================
 def index(request):
     return render(request,'index.html')
 
-# # =======================CONVERSION CODE STARTS=========================================
+# ||+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+# ||                                                                                     ||
+# ||                                                                                     ||
+# ||                                                                                     ||
+# ||                            CONVERSION CODE STARTS                                   ||
+# ||                                                                                     ||
+# ||                                                                                     ||
+# ||+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+# 
 # -------------------------------XML-TO-JSON----------------------------------------------
 def xmlToJson(request):
     if request.method == 'POST':
@@ -28,15 +37,20 @@ def xmlToJson(request):
         name = datetime.now()
         filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
 
-        # Writing the post data to the file
-        input_file_name = filename + '.xml'
+        # Creating the file name based on user 
+        if request.user.is_authenticated or request.user.is_superuser:
+            input_file_name = str(request.user) + '/' + filename + '.xml'
+            output_file_name = str(request.user) + '/' + filename + '.json'
+        else:
+            input_file_name = filename + '.xml'
+            output_file_name = filename + '.json'
+
+        # Writing the post data to the input file
         saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
         saved_file.write(xml_data)
         saved_file.close()
 
         # Converting XML to JSON
-        output_file_name = filename + '.json'
-        
         with open('media/'+ input_file_name) as fd:
             doc = xmltodict.parse(fd.read())
 
@@ -50,9 +64,12 @@ def xmlToJson(request):
         response = dict()
         response['ans'] = out
         
-        # Removing the intermediate files
-        os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
-        os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+        # Removing the intermediate files if User is not Authenticated
+        if request.user.is_superuser or request.user.is_authenticated:
+            print('User is authenticated')
+        else:
+            os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
+            os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
 
         # returning the JSON Response
         return JsonResponse(response, safe=False)
@@ -71,14 +88,20 @@ def xmlToCsv(request):
         name = datetime.now()
         filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
 
+        # Creating the file name based on user 
+        if request.user.is_authenticated or request.user.is_superuser:
+            input_file_name = str(request.user) + '/' + filename + '.xml'
+            output_file_name = str(request.user) + '/' + filename + '.csv'
+        else:
+            input_file_name = filename + '.xml'
+            output_file_name = filename + '.csv'
+
         # Writing the post data to the file
-        input_file_name = filename + '.xml'
         saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
         saved_file.write(xml_data)
         saved_file.close()
         
         # Converting XML to CSV
-        output_file_name = filename + '.csv'
         with open('media/' + input_file_name) as fd:
             doc = xmltodict.parse(fd.read())
         out = json.dumps(doc)
@@ -94,9 +117,13 @@ def xmlToCsv(request):
         response = dict()
         response['ans'] = data_csv
         
-        # Removing the intermediate files
-        os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
-        os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+        # Removing the intermediate files if User is not Authenticated
+        if request.user.is_superuser or request.user.is_authenticated:
+            print('User is authenticated')
+        else:
+            os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
+            os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+
 
         # returning the JSON Response
         return JsonResponse(response, safe=False)
@@ -114,14 +141,22 @@ def csvToJson(request):
         name = datetime.now()
         filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
 
+        # Creating the file name based on user 
+        if request.user.is_authenticated or request.user.is_superuser:
+            input_file_name = str(request.user) + '/' + filename + '.csv'
+            output_file_name = str(request.user) + '/' + filename + '.json'
+        else:
+            input_file_name = filename + '.csv'
+            output_file_name = filename + '.json'
+
         # Writing the post data to the file
-        input_file_name = filename + '.csv'
+
         saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
         saved_file.write(csv_data)
         saved_file.close()
 
         # Converting the csv file to the json format
-        output_file_name = filename + '.json' 
+
         csvfile = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'r' )  
         reader = csv.DictReader(csvfile)   
         out = json.dumps( [ row for row in reader ],indent=" " )
@@ -133,9 +168,13 @@ def csvToJson(request):
         response = dict()
         response['ans'] = out
         
-        # Removing the intermediate files
-        os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
-        os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+        # Removing the intermediate files if User is not Authenticated
+        if request.user.is_superuser or request.user.is_authenticated:
+            print('User is authenticated')
+        else:
+            os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
+            os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+
 
         # returning the JSON Response
         return JsonResponse(response, safe=False)
@@ -154,15 +193,23 @@ def csvToXml(request):
         filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
         # print('filename created')
         # print(filename)
+
+        # Creating the file name based on user 
+        if request.user.is_authenticated or request.user.is_superuser:
+            input_file_name = str(request.user) + '/' + filename + '.csv'
+            output_file_name = str(request.user) + '/' + filename + '.xml'
+        else:
+            input_file_name = filename + '.csv'
+            output_file_name = filename + '.xml'
+
         # Writing the post data to the file
-        input_file_name = filename + '.csv'
+       
         saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
         saved_file.write(csv_data)
         saved_file.close()
         print(input_file_name)
         
-        output_file_name = filename + '.xml'
-
+    
         csvData = csv.reader(open('media/'+ input_file_name))
         # csvData = open('media/'+input_file_name)
         # csvData = csv.reader(csvData)
@@ -195,9 +242,13 @@ def csvToXml(request):
         response = dict()
         response['ans'] = data_xml
         
-        # Removing the intermediate files
-        os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
-        os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+        # Removing the intermediate files if User is not Authenticated
+        if request.user.is_superuser or request.user.is_authenticated:
+            print('User is authenticated')
+        else:
+            os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
+            os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+
 
         # returning the JSON Response
         return JsonResponse(response, safe=False)
@@ -216,6 +267,14 @@ def jsonToCsv(request):
         name = datetime.now()
         filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
 
+        # Creating the file name based on user 
+        if request.user.is_authenticated or request.user.is_superuser:
+            input_file_name = str(request.user) + '/' + filename + '.json'
+            output_file_name = str(request.user) + '/' + filename + '.csv'
+        else:
+            input_file_name = filename + '.json'
+            output_file_name = filename + '.csv'
+
         # Writing the post data to the file
         input_file_name = filename + '.json'
         saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
@@ -233,9 +292,12 @@ def jsonToCsv(request):
         response = dict()
         response['ans'] = data_csv
         
-        # Removing the intermediate files
-        os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
-        os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+        # Removing the intermediate files if User is not Authenticated
+        if request.user.is_superuser or request.user.is_authenticated:
+            print('User is authenticated')
+        else:
+            os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
+            os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
 
         # returning the JSON Response
         return JsonResponse(response, safe=False)
@@ -252,6 +314,14 @@ def jsonToXml(request):
         filename = ""
         name = datetime.now()
         filename += str(name.year)+str(name.month)+str(name.day)+str(name.hour)+str(name.minute)+str(name.second)+str(name.microsecond)
+        
+        # Creating the file name based on user 
+        if request.user.is_authenticated or request.user.is_superuser:
+            input_file_name = str(request.user) + '/' + filename + '.json'
+            output_file_name = str(request.user) + '/' + filename + '.xml'
+        else:
+            input_file_name = filename + '.json'
+            output_file_name = filename + '.xml'
 
         # Writing the post data to the file
         input_file_name = filename + '.json'
@@ -271,12 +341,29 @@ def jsonToXml(request):
         response = dict()
         response['ans'] = str(xmltodict.unparse(data, pretty=True))
         
+        # Removing the intermediate files if User is not Authenticated
+        if request.user.is_superuser or request.user.is_authenticated:
+            print('User is authenticated')
+        else:
+            os.remove(os.path.join(settings.MEDIA_ROOT, input_file_name))
+            os.remove(os.path.join(settings.MEDIA_ROOT, output_file_name))
+
         # returning the JSON Response
         return JsonResponse(response, safe=False)
     else:
         return render(request,'convertEngine/json_to_xml.html')
 
-# # ====================CONVERSION_CODE_ENDS================================================
+# ||+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+# ||                                                                                     ||
+# ||                                                                                     ||
+# ||                                                                                     ||
+# ||                            CONVERSION CODE ENDS                                     ||
+# ||                                                                                     ||
+# ||                                                                                     ||
+# ||+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+
+
+# # ==========================DOCUMENTATION================================================
 def documentation(request):
     return render(request, 'convertEngine/doc.html')
 
@@ -293,4 +380,6 @@ def test(request):
     y = open(os.path.join(settings.MEDIA_ROOT, 'file.txt'), 'w')
     y.write(x)
     y.close()
+    print(User.is_authenticated)
+    print(User.username)
     return HttpResponse('test done')

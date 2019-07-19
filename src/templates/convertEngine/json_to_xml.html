@@ -2,6 +2,10 @@
 
 {% load staticfiles %}
 
+{% block head-title %}
+    JSON-XML
+{% endblock head-title %}
+    
 
 
 {% block content %}
@@ -32,7 +36,7 @@
             <div class="col-lg-4 col-sm-4">
                 <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">Write your own JSON CODE
                 </label><br>
-                <textarea name="json" id="input" cols="50" rows="28"></textarea>
+                <textarea name="json" id="input" cols="50" rows="15" style="resize: none;border-left: solid 10px orange; background: lightgrey"></textarea>
             </div>
         
             <div class="col-lg-2 col-sm-2 " style="padding-top:10%; padding-bottom:11%">
@@ -54,7 +58,7 @@
                 <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">
                     XML CODE
                 </label><br>
-                <textarea name="json" id="output" cols="50" rows="28"></textarea>    
+                <textarea name="json" id="output" cols="50" rows="15" style="resize: none;border-left: solid 10px orange; background: lightgrey"></textarea>    
             </div>
         
         </form>
@@ -81,64 +85,63 @@
         <div class="col-lg-4">
             <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">JSON CODE
             </label><br>
-            <textarea readonly cols="50" rows="28">
-                {
-                    "csv_data": {
-                     "row": [
-                      {
-                       "name": "Harmandeep Singh",
-                       "class": "B.Tech CSE",
-                       "rollno": "2017CSA1080"
-                      },
-                      {
-                       "name": "Gursharandeep Singh",
-                       "class": "B.Tech CSE",
-                       "rollno": "2017CSA1076"
-                      },
-                      {
-                       "name": "Harmandeep Singh",
-                       "class": "B.Tech CSE",
-                       "rollno": "2017CSA1078"
-                      },
-                      {
-                       "name": "Kriti Rikhi",
-                       "class": "B.Tech CSE",
-                       "rollno": "2017CSA1110"
-                      }
-                     ]
-                    }
-                }
-    
-            </textarea>
+            <textarea readonly cols="50" rows="15" style="resize: none;border-left: solid 10px orange; background: lightgrey">
+{
+    "csv_data": {
+        "row": [
+        {
+        "name": "Harmandeep Singh",
+        "class": "B.Tech CSE",
+        "rollno": "2017CSA1080"
+        },
+        {
+        "name": "Gursharandeep Singh",
+        "class": "B.Tech CSE",
+        "rollno": "2017CSA1076"
+        },
+        {
+        "name": "Harmandeep Singh",
+        "class": "B.Tech CSE",
+        "rollno": "2017CSA1078"
+        },
+        {
+        "name": "Kriti Rikhi",
+        "class": "B.Tech CSE",
+        "rollno": "2017CSA1110"
+        }
+        ]
+    }
+}
+</textarea>
         </div>
     
         <div class="col-lg-4">
             <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">XML CODE
             </label><br>
-            <textarea readonly cols="50" rows="28">
-                <?xml version="1.0" encoding="utf-8"?>
-                <csv_data>
-                    <row>
-                        <name>Harmandeep Singh</name>
-                        <class>B.Tech CSE</class>
-                        <rollno>2017CSA1080</rollno>
-                    </row>
-                    <row>
-                        <name>Gursharandeep Singh</name>
-                        <class>B.Tech CSE</class>
-                        <rollno>2017CSA1076</rollno>
-                    </row>
-                    <row>
-                        <name>Harmandeep Singh</name>
-                        <class>B.Tech CSE</class>
-                        <rollno>2017CSA1078</rollno>
-                    </row>
-                    <row>
-                        <name>Kriti Rikhi</name>
-                        <class>B.Tech CSE</class>
-                        <rollno>2017CSA1110</rollno>
-                    </row>
-                </csv_data>
+            <textarea readonly cols="50" rows="15" style="resize: none;border-left: solid 10px orange; background: lightgrey">
+<?xml version="1.0" encoding="utf-8"?>
+<csv_data>
+    <row>
+        <name>Harmandeep Singh</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1080</rollno>
+    </row>
+    <row>
+        <name>Gursharandeep Singh</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1076</rollno>
+    </row>
+    <row>
+        <name>Harmandeep Singh</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1078</rollno>
+    </row>
+    <row>
+        <name>Kriti Rikhi</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1110</rollno>
+    </row>
+</csv_data>
             </textarea>
         </div>
     
@@ -152,8 +155,8 @@
 
 
 
-    <!-- footer -->
-    {% include 'partials/footer.html' %}
+ 
+
 
 
 <!-- Convert Function -->

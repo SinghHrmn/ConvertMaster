@@ -46,6 +46,7 @@ def register_user(request):
 
                     # Making Specified Directory for every User 
                     os.mkdir(os.path.join(settings.MEDIA_ROOT, user_name))
+                    
                     messages.success(request,"You are now registered and can login")
                     return HttpResponseRedirect(reverse('login'))
         else:
