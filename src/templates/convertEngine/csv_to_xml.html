@@ -5,7 +5,129 @@
 {% endblock head-title %}
 
 {% block content %}
-<h1>csv-xml</h1>
+
+<!-- Main heading -->
+<div class="row" style="margin-top:-22px;padding-top:2px">
+    <h1 class="text-center" style="margin-top: 0px; background-color: #ccffff; font-size:4rem; font-family:Trocchi ;color:#330000 ">
+        <b>CSVTO XML CONVERSION</b>
+    </h1>         
+</div>
+
+
+<!-- conversion heading -->
+<div class="row justify-content-center">
+    <h3 class="text-center" style="margin-top:2%;padding-top: 5px;padding-bottom: 5px; font-family:Trocchi ;color: lemonchiffon;background-color: #d83838">
+        Your Code Conversion Area</h3>
+</div>
+
+<!-- Conversion Area -->
+
+<div class="container-fluid" style="margin-top:2%">
+    <div class="row justify-content-center">
+        <form>
+            {% csrf_token %}
+            <div class="col-lg-1 col-sm-1 ">
+
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">Write your own CSV CODE
+                </label><br>
+                <textarea name="json" id="input" cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width:100%"></textarea>
+            </div>
+        
+            <div class="col-lg-2 col-sm-2 " style="padding-top:10%; padding-bottom:11%">
+                <input style="margin-left:3% " type="button" onclick="csvtoxml()" value="Convert" class="text-center btn btn-primary">
+                <br><br><br>
+                {% if user.is_authenticated %}
+                    <!-- workable button only when user has login -->
+                    <input type="button" onclick="csvtoxml()" style="margin-left:3%" value="Download" class="text-center btn btn-primary">
+                {% else %}
+                    <!-- non functionable bsutton -->
+                <a href="{% url 'login'  %}">
+                    <input type="button" style="margin-left:3%" value="Download" class="text-center btn btn-primary">
+                </a>
+                {% endif %}
+            </div>
+
+
+            <div class="col-lg-4 col-sm-4" >
+                <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">
+                    XML CODE
+                </label><br>
+                <textarea name="json" id="output" cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width: 100%"></textarea>    
+            </div>
+        
+        </form>
+    </div>
+</div>
+
+<!-- example code heading -->
+<div class="row justify-content-center">
+    <h3 class="text-center" style="margin-top:2.5%;padding-top: 5px;padding-bottom: 5px; font-family:Trocchi ;color: lemonchiffon;background-color: #d83838">
+        Here is an Example Code
+    </h3>
+</div>
+
+<!-- Example Code Showcase -->
+    
+<div class="container-fluid" style="margin-top: 2%">
+    
+    <div class="row justify-content-center">
+    
+        <div class="col-lg-2">
+    
+        </div>
+    
+        <div class="col-lg-4">
+            <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">CSV CODE
+            </label><br>
+            <textarea readonly cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width:100%">
+                name,class,rollno
+                Harmandeep Singh,B.Tech CSE,2017CSA1080
+                Gursharandeep Singh,B.Tech CSE,2017CSA1076
+                Harmandeep Singh,B.Tech CSE,2017CSA1078
+                Kriti Rikhi,B.Tech CSE,2017CSA1110
+</textarea>
+        </div>
+    
+        <div class="col-lg-4">
+            <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">XML CODE
+            </label><br>
+            <textarea readonly cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width:100%">
+<?xml version="1.0" encoding="utf-8"?>
+<csv_data>
+    <row>
+        <name>Harmandeep Singh</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1080</rollno>
+    </row>
+    <row>
+        <name>Gursharandeep Singh</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1076</rollno>
+    </row>
+    <row>
+        <name>Harmandeep Singh</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1078</rollno>
+    </row>
+    <row>
+        <name>Kriti Rikhi</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1110</rollno>
+    </row>
+</csv_data>
+            </textarea>
+        </div>
+    
+    
+    
+    </div>
+
+</div>
+
+
+{% comment %}
     <form action="" method="post">
         {% csrf_token %}
         <label for="">CSV</label><br>
@@ -17,6 +139,7 @@
             
         <input type="button" onclick="csvtoxml()" value="convert">
     </form>
+{% endcomment %}
     <script>
         function csvtoxml(){
             var data = new FormData();

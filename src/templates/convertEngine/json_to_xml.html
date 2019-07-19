@@ -36,19 +36,19 @@
             <div class="col-lg-4 col-sm-4">
                 <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">Write your own JSON CODE
                 </label><br>
-                <textarea name="json" id="input" cols="50" rows="15" style="resize: none;border-left: solid 10px orange; background: lightgrey"></textarea>
+                <textarea name="json" id="input" cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width:100%"></textarea>
             </div>
         
             <div class="col-lg-2 col-sm-2 " style="padding-top:10%; padding-bottom:11%">
-                <input style="margin-left:3% " type="button" onclick="jsontoxml()" value="Convert" class="text-center btn btn-success">
+                <input style="margin-left:3% " type="button" onclick="jsontoxml()" value="Convert" class="text-center btn btn-primary">
                 <br><br><br>
                 {% if user.is_authenticated %}
                     <!-- workable button only when user has login -->
-                    <input type="button" onclick="jsontoxml()" style="margin-left:3%" value="Download" class="text-center btn btn-success">
+                    <input type="button" onclick="jsontoxml()" style="margin-left:3%" value="Download" class="text-center btn btn-primary">
                 {% else %}
                     <!-- non functionable bsutton -->
                 <a href="{% url 'login'  %}">
-                    <input type="button" style="margin-left:3%" value="Download" class="text-center btn btn-success">
+                    <input type="button" style="margin-left:3%" value="Download" class="text-center btn btn-primary">
                 </a>
                 {% endif %}
             </div>
@@ -58,7 +58,7 @@
                 <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">
                     XML CODE
                 </label><br>
-                <textarea name="json" id="output" cols="50" rows="15" style="resize: none;border-left: solid 10px orange; background: lightgrey"></textarea>    
+                <textarea name="json" id="output" cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width: 100%"></textarea>    
             </div>
         
         </form>
@@ -85,7 +85,7 @@
         <div class="col-lg-4">
             <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">JSON CODE
             </label><br>
-            <textarea readonly cols="50" rows="15" style="resize: none;border-left: solid 10px orange; background: lightgrey">
+            <textarea readonly cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width:100%">
 {
     "csv_data": {
         "row": [
@@ -118,7 +118,7 @@
         <div class="col-lg-4">
             <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">XML CODE
             </label><br>
-            <textarea readonly cols="50" rows="15" style="resize: none;border-left: solid 10px orange; background: lightgrey">
+            <textarea readonly cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width:100%">
 <?xml version="1.0" encoding="utf-8"?>
 <csv_data>
     <row>
