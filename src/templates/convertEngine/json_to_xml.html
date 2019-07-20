@@ -28,7 +28,7 @@
 
 <div class="container-fluid" style="margin-top:2%">
     <div class="row justify-content-center">
-        <form>
+        
             {% csrf_token %}
             <div class="col-lg-1 col-sm-1 ">
 
@@ -64,18 +64,12 @@
                 <div class="col-xs-12 col-sm-offset-4 col-sm-8 col-sm-onset-0 col-md-offset-6 col-md-6">
                     {% if user.is_authenticated or user.is_superuser%}
                         <!-- Form for saving database from user -->
-                        <form action="{% url 'save' %}" method="post">
-                            {% csrf_token %}
-                            <input type="hidden" value="JSON" name='original'>
-                            <input type="hidden" value="XML" name='converted'>
-                            <input type="hidden" value='' id='filename' name='filename'>
-                            <input type="text" required="true" name='convName' placeholder="Enter Conversion Name">
-                        
-                        
-                        <!-- workable button only when user has login -->
-                        <input type="submit" class="btn btn-primary" value="Save conversion">
-                            
-                        </form>
+                            <input type="hidden" value="json" id="original">
+                            <input type="hidden" value="xml" id="converted">
+                            <input type="hidden" value="" id="filename" name='filename'>
+                            <input type="text" name="convName" id="convName" placeholder="Enter Conversion Name">
+                            <input type="button" class="btn btn-info" onclick="save()" value="Save Conversion">   
+                       
                         <a href="" class="btn btn-primary" id='download' download>Download</a>
                         
                     {% else %}
@@ -208,34 +202,37 @@
             request.open('POST', "{% url 'json-xml' %}", true);
             request.send(data);
         }
-        
+      
         function save(){
-            alert('Save Function called')
             var data2 = new FormData();
-            var original = document.getElementById('original').value;
-            var converted = document.getElementById('converted').value;
+            var original = 'json';
+            var converted = 'xml';
             var filename = document.getElementById('filename').value;
-            var convName = document.getElementById('ConvName').value;
+            var convName = document.getElementById('convName').value;
+            if( convName == ""){
+                alert('Conversion Name Cannot be empty');
+            }
+            else{
+                data2.append('original',original);
+                data2.append('converted',converted);
+                data2.append('filename',filename);
+                data2.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+                data2.append('convName', convName);
+                var request = new XMLHttpRequest();
+                request.onreadystatechange = function (){
+                    if(this.readyState == 4 && this.status == 200){
+                        var out = JSON.parse(this.response);
+                        alert('Saved Success')
+                        
+                    }
+                };
+                request.open('POST', "{% url 'save' %}", true);
+                request.send(data2);
+            }
+
             
-            data2.append('original',original);
-            data2.append('converted',converted);
-            data2.append('filename',filename);
-            data2.append('csrfmiddlewaretoken', '{{ csrf_token }}');
-        
-        
-            alert('Conversion Name Cannot be empty')
-        
-            var request = new XMLHttpRequest();
-            request.onreadystatechange = function (){
-                if(this.readyState == 4 && this.status == 200){
-                    var out = JSON.parse(this.response);
-                    alert('Saved Success')
-                    
-                }
-            };
-            request.open('POST', "{% url 'save' %}", true);
-            request.send(data2);
         }
+       
     </script>
     
 {% endblock%}

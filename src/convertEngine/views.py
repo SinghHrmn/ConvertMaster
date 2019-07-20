@@ -275,7 +275,7 @@ def jsonToCsv(request):
         else:
             input_file_name = filename + '.json'
             output_file_name = filename + '.csv'
-
+        
         # Writing the post data to the file
         input_file_name = filename + '.json'
         saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
@@ -325,13 +325,11 @@ def jsonToXml(request):
             output_file_name = filename + '.xml'
 
         # Writing the post data to the file
-        input_file_name = filename + '.json'
         saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
         saved_file.write(json_data)
         saved_file.close()
 
         # Converting JSON to XML
-        output_file_name = filename + '.xml'
         data = open('media/' + input_file_name, 'r').read()
         data = json.loads(data)
 
@@ -387,15 +385,11 @@ def myconversions(request):
 
 # ===========================TEST FUNC===============================
 def test(request):
-    x = "Hello world"
-    # user = request.session['User']
-    filename = '6-06-2019'
-    y = open(os.path.join(settings.MEDIA_ROOT, 'file.txt'), 'w')
-    y.write(x)
-    y.close()
-    filepath = '/media/kriti/201971863836316660.json'
-    filepath = '/media/images/logo_short.png'
-
-   
-    
-    return HttpResponse('<h1>Test Code</h1><a href=' + filepath + ' download>Click me to download</a>')
+    pass
+    # x = "Hello world"
+    # # user = request.session['User']
+    # filename = '6-06-2019'
+    # #form = "<form action=\"{% url 'save' %}\"" + ' method="post"><input type="hidden" value="JSON" name=\'original\'><input type="hidden" value="XML" name=\'converted\'><input type="hidden" value="kriti/20197205457858905" id="ilename" name="filename"><input type="hidden" name="convName" value="Enter Conversion Name"><input type="submit" class="btn btn-primary" value="Save conversion"></form>'
+    # filepath = '/media/kriti/201971863836316660.json'
+    # filepath = '/media/images/logo_short.png'
+    # return render(request,'test.html')
