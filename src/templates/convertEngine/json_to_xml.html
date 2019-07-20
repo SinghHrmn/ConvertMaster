@@ -63,7 +63,8 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-offset-4 col-sm-8 col-sm-onset-0 col-md-offset-6 col-md-6">
                     {% if user.is_authenticated or user.is_superuser%}
-                        <!-- Form for saving database from user -->
+                        
+                    <!-- Form for saving database from user -->
                         <form action="{% url 'save' %}" method="post">
                             {% csrf_token %}
                             <input type="hidden" value="JSON" name='original'>
@@ -79,7 +80,7 @@
                         <a href="" class="btn btn-primary" id='download' download>Download</a>
                         
                     {% else %}
-                        <!-- non functionable bsutton -->
+                        <!-- non functionable button -->
                         <label for="">( Login is Required for saving the Conversion and downloading the code )</label>
                         <input type="text" placeholder="Enter Conversion Name" disabled='disabled'>
                         <button class="btn btn-primary" type="submit" disabled="disabled">Save Conversion</button>
@@ -176,13 +177,6 @@
     </div>
 
 </div>
-    
-
-
-
-
- 
-
 
 
 <!-- Convert Function -->

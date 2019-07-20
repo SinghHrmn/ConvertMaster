@@ -1,0 +1,26 @@
+{
+    "csv_data": {
+        "row": [
+        {
+        "name": "Harmandeep Singh",
+        "class": "B.Tech CSE",
+        "rollno": "2017CSA1080"
+        },
+        {
+        "name": "Gursharandeep Singh",
+        "class": "B.Tech CSE",
+        "rollno": "2017CSA1076"
+        },
+        {
+        "name": "Harmandeep Singh",
+        "class": "B.Tech CSE",
+        "rollno": "2017CSA1078"
+        },
+        {
+        "name": "Kriti Rikhi",
+        "class": "B.Tech CSE",
+        "rollno": "2017CSA1110"
+        }
+        ]
+    }
+}
