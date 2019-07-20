@@ -11,27 +11,27 @@ Convert Master is a free online file converter which can be used for the followi
     ```
 3.  Install all the dependancies for the project from __requirements.txt__.
     ```bash
-    (convertmaster)mastervulcan@MasterVulcan:~/ConvertMaster$ pip install -r 'requirements.txt'
+    (convertmaster) mastervulcan@MasterVulcan:~/ConvertMaster$ pip install -r 'requirements.txt'
     ```
 4.  After all the dependencies are installed, we will start a __local django server__. 
     * First of all we will move to the __ConvertMaster/src__ the directory where __manage.py__ is located.
     ```bash
-    (convertmaster)mastervulcan@MasterVulcan:~/ConvertMaster$ cd src 
-    (convertmaster)mastervulcan@MasterVulcan:~/ConvertMaster/src$
+    (convertmaster) mastervulcan@MasterVulcan:~/ConvertMaster$ cd src 
+    (convertmaster) mastervulcan@MasterVulcan:~/ConvertMaster/src$
     ```
     * Then we will start making migrations for all the apps.
     ```bash
-    (convertmaster)mastervulcan@MasterVulcan:~/ConvertMaster/src$ python manage.py makemigrations
-    (convertmaster)mastervulcan@MasterVulcan:~/ConvertMaster/src$ python manage.py migrate
+    (convertmaster) mastervulcan@MasterVulcan:~/ConvertMaster/src$ python manage.py makemigrations
+    (convertmaster) mastervulcan@MasterVulcan:~/ConvertMaster/src$ python manage.py migrate
     ```
     * Now its time to create a __SuperUser__ to fully access the admin area. After running the following command fill the details
       and you are ready to go.
     ```bash
-    (convertmaster)mastervulcan@MasterVulcan:~/ConvertMaster/src$ python manage.py createsuperuser
+    (convertmaster) mastervulcan@MasterVulcan:~/ConvertMaster/src$ python manage.py createsuperuser
     ```
     * Now to run local server run the following command.
     ```bash
-    (convertmaster)mastervulcan@MasterVulcan:~/ConvertMaster/src$ python manage.py runserver
+    (convertmaster) mastervulcan@MasterVulcan:~/ConvertMaster/src$ python manage.py runserver
     ```
 5.  After the local server starts jump to your browser and open the following __url__ and enjoy the App.
     ```
