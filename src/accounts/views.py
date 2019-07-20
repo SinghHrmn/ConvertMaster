@@ -79,5 +79,5 @@ def login_user(request):
 def logout(request):
     if request.method=="POST":
         auth.logout(request)
-        messages.success(request,"You are logged out")
+        # messages.success(request,"You are logged out")
         return HttpResponseRedirect(reverse('index'))
