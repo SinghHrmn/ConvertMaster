@@ -38,3 +38,5 @@ Convert Master is a free online file converter which can be used for the followi
     https://127.0.0.1:8000/
     ```
   
+# Documentation
+Documentation will be released soon
