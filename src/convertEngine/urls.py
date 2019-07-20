@@ -14,6 +14,8 @@ urlpatterns = [
     path('convert/Documentation', documentation, name='Doc'),
     path('convert/myconversions', myconversions, name='myconversions'),
     path('convert/save-conversion', saveconversion, name='save'),
+    path('convert/SingleConversionView', SingleConversionView, name='viewSingleConv'),
+
 
 
 

@@ -379,9 +379,61 @@ def saveconversion(request):
         return JsonResponse({'ans':'Consverion Success'}, safe=False)
 
 # ====================shows previous convertions for logined users==========================
+
 @login_required
 def myconversions(request):
-    return render(request,'convertEngine/myconversions.html')
+    myconversion=MyConversion.objects.all().filter(user=request.user)
+    
+    x=[]
+    for dict in myconversion:
+        d={}
+        filename=dict.filename 
+        converted=dict.converted
+        downloadlink='..'+'/'+'media'+'/'+str(request.user) + '/' + str(filename) + '.' + str(converted)
+        d['downloadlink']=downloadlink
+        x.append(d)
+
+    context={
+        'myconversion':myconversion,
+        'mydata':x
+    }
+
+    return render(request,'convertEngine/myconversions.html',context)
+
+#===================view of only one specific conversion=================================
+
+@login_required
+def SingleConversionView(request):
+
+    if request.method =='POST':
+
+        original=request.POST['original']
+        converted=request.POST['converted']
+        convName=request.POST['convName']
+        filename=request.POST['filename']
+
+        singleconversion=MyConversion.objects.all().filter(user=request.user,filename=filename,convName=convName)
+        
+        #saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
+        # input_file_name = str(request.user) + '/' + filename + '.csv'
+        # saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
+        
+        
+        originalfilename=str(request.user)+ '/' + filename + '.' + str(original)
+        originalfile = open(os.path.join(settings.MEDIA_ROOT,originalfilename),'r').read()
+
+        
+        convertedfilename=str(request.user) + '/' + filename + '.' + str(converted)
+        convertedfile=open(os.path.join(settings.MEDIA_ROOT,convertedfilename),'r').read()
+
+        context={
+            'originalfile':originalfile,
+            'convertedfile':convertedfile,
+            'converted':converted,
+            'original':original,
+           
+        }
+    return render (request,'convertEngine/SingleConversionView.html',context)
 
 # ===========================TEST FUNC===============================
 def test(request):

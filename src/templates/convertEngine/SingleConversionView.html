@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+
+{% block content %}
+
+<!-- Main heading -->
+<div class="row col-md-offset-1" >
+    <h1 style="margin-top: 35px;font-size:4rem; font-family:Trocchi ;color:#330000 ">
+        <b style='text-transform:uppercase'>{{original}} TO {{converted}} CONVERSION</b>
+        <hr style='height:8px;border: 0;box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);''>  
+           
+    </h1>      
+</div>
+
+
+<!-- Code Showcase -->
+    
+<div class="container-fluid" style="margin-top: 2%">
+    
+        <div class="row justify-content-center">
+        
+            <div class="col-lg-2">
+        
+            </div>
+        
+            <div class="col-lg-4">
+                <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000;text-transform: uppercase">{{original}} CODE
+                </label><br>
+                <textarea readonly cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width:100%">{{originalfile}}
+                </textarea>
+            </div>
+        
+            <div class="col-lg-4">
+                <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000;text-transform: uppercase">{{converted}} CODE
+                </label><br>
+                <textarea readonly cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width:100%"> {{convertedfile}}
+                </textarea>
+            </div>
+        
+        
+        
+        </div>
+    
+    </div>
+    
+
+{% endblock %}
+
+
+
+
+
+
