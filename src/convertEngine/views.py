@@ -396,7 +396,6 @@ def myconversions(request):
         x.append(d)
 
     context={
-        'myconversion':myconversion,
         'mydata':x
     }
 
