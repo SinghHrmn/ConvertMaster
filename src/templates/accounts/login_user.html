@@ -3,17 +3,25 @@
 {% block head-title %}Login{% endblock head-title %}
     
 {% block content %}
+
 <!-- Jumbotron-->
-<div class="text-center jumbotron">
-    <h2>
+<div class="row text-center" style="background-color:#e0e0d1;margin-top: -21px;padding-bottom: 13px;">
+    <h2 style="color: #8b0000">
         <b> Login Here </b> 
     </h2>
 </div>
+
+<br><br>
+
 <!-- Main Form -->
 <div class="container-fluid">
+
+    <div class="col-lg-4 col-sm-4">
+
+    </div>
     
-    <div class=" col-sm-offset-1 col-sm-10 text-center col-sm-onset-1 col-lg-offset-4 col-lg-4 col-lg-onset-4">
-        <div class="card-body" style="border: 1px solid #d83838; border-radius: 25px;">
+    <div class=" col-sm-10 text-center col-lg-4 ">
+        <div class="card-body">
             <!--Alerts-->
             {% include 'partials/_alerts.html' %}
             <!-- Login Form  -->
@@ -22,23 +30,24 @@
                 {% csrf_token %}
                 <div class="form-group"> 
                     <label> 
-                        <h4> 
+                        <h4 style='font-size:145%'> 
                             <b> Enter the User Name </b> 
                         </h4> 
-                        <input class=" form-control " type='text' placeholder="User Name" name='user_name' data-rule-required="true" data-msg-required="This Field is required" /> 
+                        <input class="form-control" style="height:44px;" type='text' placeholder="User Name" name='user_name' data-rule-required="true" data-msg-required="This Field is required" /> 
                     </label> 
                 </div>
                 <div class="form-group"> 
                     <label > 
-                        <h4 >
+                        <h4 style='font-size:145%' >
                             <b> Enter the Password  </b> 
                         </h4> 
-                        <input class=" form-control " placeholder="Password" type='password' name='password'  data-rule-required="true" data-msg-required="This Field is required" />  
+                        <input class=" form-control " style="height:44px;" placeholder="Password" type='password' name='password'/>  
                     </label> 
                 </div>
-                
+               <br> 
                 <div class="form-group"> 
-                    <input type="submit" class=" btn btn-success" value="Login" /> 
+                    <input type="submit" style="width:80px" class=" btn btn-success" value="Login" /> 
+                    <br><br>
                     <h5>Don't have an account? | <a href="{% url 'register' %}">Sign Up</a> </h5>
                 </div>
             
