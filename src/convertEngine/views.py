@@ -385,11 +385,13 @@ def myconversions(request):
     myconversion=MyConversion.objects.all().filter(user=request.user)
     
     x=[]
-    for dict in myconversion:
+    for obj in myconversion:
         d={}
-        filename=dict.filename 
-        converted=dict.converted
-        downloadlink='..'+'/'+'media'+'/'+str(request.user) + '/' + str(filename) + '.' + str(converted)
+        d['filename']=obj.filename 
+        d['converted']=obj.converted
+        d['original'] = obj.original
+        d['convName'] = obj.convName
+        downloadlink='/media/' + obj.user.username +'/'+ obj.filename + '.' + obj.converted
         d['downloadlink']=downloadlink
         x.append(d)
 

@@ -34,7 +34,7 @@
                 <th>View</th>
                 <th>Download</th>
             </tr>
-            {%for conversion in myconversion%}
+            {%for conversion in mydata%}
         
                 <tr>
                     <td id="convName" >{{conversion.convName}}</td>
@@ -54,7 +54,7 @@
                         </form>
                     </td>
                     
-                    <td><a href = '{{ x.downloadlink }}' id='download' class="btn btn-primary" download><span class="glyphicon glyphicon-arrow-down"></span></a></td>
+                    <td><a href = '{{ conversion.downloadlink }}'  class="btn btn-primary" download><span class="glyphicon glyphicon-arrow-down"></span></a></td>
                 </tr>
             {% endfor %}
         </table>
