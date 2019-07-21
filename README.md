@@ -1,5 +1,12 @@
 # ConvertMaster
-Convert Master is a free online file converter which can be used for the following conversion:- XML to JSON,XML to CSV,JSON to XML ,JSON to CSV,CSV to JSON,CSV to JSON. Convert Master can also be used for downloading the converted file and also to preview the converted file on the go. Registered Users can also view and download all of their converted files after a secure login. This project was developed under __CESS Summer of Code 2.0__ by Team D'Coders. @mention:[Harmandeep Singh](https://github.com/SinghHrmn) along with @mention:[Kriti Rikhi ](https://github.com/kritirikhi)build the project from scratch.
+Convert Master is a free online file converter which can be used for the following conversions:- 
+* __XML to JSON__
+* __XML to CSV__
+* __JSON to XML__ 
+* __JSON to CSV__
+* __CSV to JSON__
+* __CSV to JSON__ 
+Convert Master can also be used for downloading the converted file and also to preview the converted file on the go. Registered Users can also view and download all of their converted files after a secure login. This project was developed under __CESS Summer of Code 2.0__ by Team D'Coders. @mention:[Harmandeep Singh](https://github.com/SinghHrmn) along with @mention:[Kriti Rikhi ](https://github.com/kritirikhi)build the project from scratch.
 # Installation Guide
 1.  Setup a virtual enviornment inside directory __ConvertMaster__. Though it is not neccessary but recommended.
     ```bash
@@ -40,3 +47,4 @@ Convert Master is a free online file converter which can be used for the followi
   
 # Documentation
 Documentation will be released soon
+![Convert Master Logo](./src/media/logo_short.png)
