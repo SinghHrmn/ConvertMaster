@@ -19,7 +19,7 @@ def index(request):
 # ====================================Register User==============================================
 
 def register_user(request):
-
+    
     if request.method=='POST':
         
         first_name = request.POST['first_name']
