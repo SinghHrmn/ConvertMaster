@@ -47,4 +47,4 @@ Convert Master can also be used for downloading the converted file and also to p
   
 # Documentation
 Documentation will be released soon
-![Convert Master Logo](./src/media/logo_short.png)
+![Convert Master Logo](./src/media/images/logo_short.png)

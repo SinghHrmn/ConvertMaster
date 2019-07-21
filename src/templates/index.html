@@ -1,0 +1,156 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Convert Master</title>
+    
+    <!-- Latest compiled and minified CSS -->
+   <link href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- jQuery library -->
+    <script src="{% static 'jquery-3.3.1.min.js'  %}" rel='stylesheet'></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="{% static 'bootstrap-3.4.1-dist/js/bootstrap.min.js' %}" rel='stylesheet' ></script>
+    
+    <!-- css file -->
+    <link rel="stylesheet" href="{% static 'css/index_style.css' %}">
+
+    <!-- javascript file -->
+    <script src="{% static 'main.js' %}" rel='stylesheet'></script>
+</head>
+<body>
+  <!-- Navbar -->
+  {% include 'partials/navbar.html' %}
+
+  <!--Alerts-->
+  {% include 'partials/_alerts.html' %}
+ 
+  <div class="container-fluid">
+     <!-- Showcase area -->
+    <div class="row main_intro_row">
+      <div class="col-md-12" id="showcase_img">
+        <div class="row">
+          <div class="col-md-offset-3 col-md-6 col-md-offset-3 title_subhead" >
+            <h1 class="text-center title">Welcome To Convert Master</h1>
+            <h4 class="text-center subhead">Your Online Type Conversion Friend</h4>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <!-- About Us  -->
+    <div class="row container-fluid">
+        <div class="col-xs-12 col-md-offset-1 col-md-2 col-sm-offset-4 col-sm-4 col-sm-onset-4 col-xs-offset-4 col-xs-4 col-xs-onset-4">  
+          <img class="img img-responsive" src="../media/images/cm_logo.png" alt="Convert Master" style="height: 100%;
+          width: 100%;
+          margin-top: 15%;
+          margin-bottom:10%;
+          box-sizing: border-box;">
+        </div>
+        <div class="col-xs-12 col-md-8 col-md-onset-1 col-sm-offset-1 col-sm-10 col-sm-onset-1 " style="margin-top: 18px;height: 100%;">
+          
+            <div class="row">
+              <h1 class="text-center" style="color:#4d0000">About Us</h1>
+            </div>
+            <div class="row" style="height: 100% ; margin: 0% 1%;" >
+              <p class="text-justify" style="margin-top: 20px;font-size: 20px;color:#1f284d">Convert Master is a free open source online software that converts XML, CSV, JSON to each other. 
+                Convert Master is easy to use and powerful enough to handle a large amount of data. One can used it for downloading the converted file and also to preview the converted file on the go. Convert Master is a project build under <b>CESS Summer Of Code 2.0</b> by Team D'Coders.
+                Its open source nature allows you to contribute and make it even more incredible. See <a href="https://github.com/SinghHrmn/ConvertMaster/blob/master/README.md#documentation">Documentation</a> for help!
+              </p>
+            </div>
+        </div>
+    </div>
+  
+
+    <!-- Services -->
+
+    <div class="row services_header" >
+      <div class="col-md-offset-4 col-md-4 col-md-onset-4">
+        <h1 class="text-center ">Services</h1>
+      </div>
+    </div>
+    <div class="container service_button" id="service_button" >
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                  <div class="col-md-offset-1 col-md-10 col-md-onset-1">
+                      <a class="btn btn-success text-center btn-lg buttons_links" href="{% url 'xml-json' %}" > XML to JSON</a>
+                  </div>
+                  
+                </div>
+            </div>
+          <div class="col-md-4">
+            <div class="row">
+              
+              <div class="col-md-offset-1 col-md-10 col-md-onset-1">
+                  <a class="btn btn-success text-center btn-lg buttons_links" href="{% url 'xml-csv' %}" > XML to CSV</a>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              
+              <div class="col-md-offset-1 col-md-10 col-md-onset-1" >
+                <a class="btn btn-success text-center btn-lg buttons_links" href="{% url 'json-xml' %}"> JSON to XML</a>
+              </div>
+              
+            </div>
+          </div>
+          
+    
+        </div>
+
+    </div>
+    
+    <div class="container service_button">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="row">
+              
+              <div class="col-md-offset-1 col-md-10 col-md-onset-1" >
+                  <a class="btn btn-success text-center btn-lg buttons_links" href="{% url 'json-csv' %}" > JSON to CSV</a>
+              </div>
+              
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+          
+            <div class="col-md-offset-1 col-md-10 col-md-onset-1">
+                <a class="btn btn-success text-center btn-lg buttons_links" href="{% url 'csv-xml' %}" > CSV to XML</a>
+            </div>
+          
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+          
+            <div class="col-md-offset-1 col-md-10 col-md-onset-1  ">
+              <a class="btn btn-success text-center btn-lg buttons_links" href="{% url 'csv-json' %}"> CSV to JSON</a>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    
+      
+
+    </div>
+  </div>
+
+  <!-- footer -->
+   {% include 'partials/footer.html' %} 
+</body>
+</html>
+
+
+
+
+
+
+
+

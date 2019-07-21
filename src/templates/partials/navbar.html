@@ -1,0 +1,67 @@
+<style>
+
+.navbar_logo .navbar_logo_img{
+  height: 50px;
+  width: 205px;
+  margin-left: -15px;
+  padding: 0px;  
+}
+
+.navbar{
+  background:#d83838;
+}
+
+
+</style>
+
+<nav class="navbar navbar-inverse" >
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle nav" data-toggle="collapse" data-target="#myNavbar" style="color: black">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar_logo" href="/"><img src="../../media/images/navbar_logo.png" class="navbar_logo_img" alt="Convert Master"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Services
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'xml-csv' %}">XML to CSV</a></li>
+            <li><a href="{% url 'xml-json' %}">XML to JSON</a></li>
+            <li><a href="{% url 'json-xml' %}">JSON to XML</a></li>
+            <li><a href="{% url 'json-csv' %}">JSON to CSV</a></li>
+            <li><a href="{% url 'csv-json' %}">CSV to JSON</a></li>
+            <li><a href="{% url 'csv-xml' %}">CSV to XML</a></li>
+
+
+          </ul>
+        </li>
+        <li class="active"><a href="{% url 'Doc' %}">Documentation</a></li> 
+        <li class="active"><a href="#">API</a></li> 
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+        {% if user.is_authenticated %}
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href=""><span class="glyphicon glyphicon-user"></span> Welcome {{ user.username }}</a></li>
+            <li class="active"><a href="{% url 'myconversions' %}">Your Conversions</a></li>            
+            <li class="active"><a href="javascript:{document.getElementById('logout').submit()}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>  </li>
+            <form method="POST" action="{% url 'logout' %}" id='logout'>
+              {% csrf_token %}
+              <input type="hidden" />
+            </form>
+          </ul>
+        {% else %}      
+          <li class="active"><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li class="active"><a href="{% url 'login'%}" style="margin-right: -15px; "><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

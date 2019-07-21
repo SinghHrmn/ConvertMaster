@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+
+{% block head-title %}
+    CSV-JSON
+{% endblock head-title %}
+
+{% block content %}
+
+<!-- Main heading -->
+<div class="row" style="margin-top:-22px;padding-top:2px">
+    <h1 class="text-center" style="margin-top: 0px; background-color:#e0e0d1; font-size:4rem; font-family:Trocchi ;color:#330000 ">
+        <b>CSV TO JSON CONVERSION</b>
+    </h1>         
+</div>
+
+<!-- conversion heading -->
+<div class="row justify-content-center">
+    <h3 class="text-center" style="margin-top:2%;padding-top: 5px;padding-bottom: 5px; font-family:Trocchi ;color: lemonchiffon;background-color: #d83838">
+        Your Code Conversion Area</h3>
+</div>
+
+<!-- Conversion Area -->
+
+<div class="container-fluid" style="margin-top:2%">
+    <div class="row justify-content-center">
+     
+            {% csrf_token %}
+            <div class="col-lg-2 col-sm-2 ">
+
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">Write your own CSV CODE
+                </label><br>
+                <textarea name="json" id="input" cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width:100%"></textarea>
+            </div>
+            
+            <div class="col-lg-4 col-sm-4" >
+                <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">
+                    JSON CODE
+                </label><br>
+                <textarea name="json" id="output" cols="50" rows="15" style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width: 100%"></textarea>    
+            </div>
+
+
+            <div class="row">
+                    <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-sm-onset-0 col-md-offset-4 col-md-6 col-lg-offest-5 col-lg-5">
+                        <br><br>
+                        {% if user.is_authenticated or user.is_superuser%}
+                            <!-- Form for saving database from user -->
+                            <input type="hidden" value="" id="filename" name='filename'>
+                            <input type="text" name="convName" id="convName" placeholder="Enter Conversion Name">
+                            <input type="button" class="btn btn-info" onclick="save()" value="Save Conversion">   
+                           
+                            <a href="" class="btn btn-primary" id='download' download>Download</a>
+                            
+                        {% else %}
+                            <!-- non functionable button -->
+                            <label for="">( Login is Required for saving the Conversion and downloading the code )</label>
+                            <br><br>
+                            <input type="text" placeholder="Enter Conversion Name" disabled='disabled'>
+                            <button class="btn btn-primary" type="submit" disabled="disabled">Save Conversion</button>
+                            <input type="button" disabled='disabled' value="Download" class="text-center btn btn-primary">
+                        {% endif %}
+                        <input  type="button" onclick="csvtojson()" value="Convert" class="text-center btn btn-danger">
+                    </div>
+                </div>
+    </div>
+</div>
+
+
+<!-- example code heading -->
+<div class="row justify-content-center">
+    <h3 class="text-center" style="margin-top:2.5%;padding-top: 5px;padding-bottom: 5px; font-family:Trocchi ;color: lemonchiffon;background-color: #d83838">
+        Here is an Example Code
+    </h3>
+</div>
+
+
+<!-- Example Code Showcase -->
+    
+<div class="container-fluid" style="margin-top: 2%">
+    
+    <div class="row justify-content-center">
+    
+        <div class="col-lg-2">
+    
+        </div>
+    
+        <div class="col-lg-4">
+            <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">CSV CODE
+            </label><br>
+            <textarea readonly cols="50" rows="15" 
+            style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; 
+            width:100%">
+name,class,rollno
+Harmandeep Singh,B.Tech CSE,2017CSA1080
+Gursharandeep Singh,B.Tech CSE,2017CSA1076
+Harmandeep Singh,B.Tech CSE,2017CSA1078
+Kriti Rikhi,B.Tech CSE,2017CSA1110
+</textarea>
+        </div>
+    
+        <div class="col-lg-4">
+            <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:2rem;color:#1a0000">JSON CODE
+            </label><br>
+            <textarea readonly cols="50" rows="15" 
+            style="resize: none;border-left: solid 10px #1f284d; background: lightgrey; width:100%">
+{
+    "csv_data": {
+        "row": [
+        {
+        "name": "Harmandeep Singh",
+        "class": "B.Tech CSE",
+        "rollno": "2017CSA1080"
+        },
+        {
+        "name": "Gursharandeep Singh",
+        "class": "B.Tech CSE",
+        "rollno": "2017CSA1076"
+        },
+        {
+        "name": "Harmandeep Singh",
+        "class": "B.Tech CSE",
+        "rollno": "2017CSA1078"
+        },
+        {
+        "name": "Kriti Rikhi",
+        "class": "B.Tech CSE",
+        "rollno": "2017CSA1110"
+        }
+        ]
+    }
+}
+            </textarea>
+        </div>
+    
+    
+    
+    </div>
+
+</div>
+
+{% comment %}
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="">CSV</label><br>
+    <textarea name="csv" id="input" cols="30" rows="10"></textarea>
+
+    
+    <label for="">JSON</label>
+    <textarea name="json" id="output" cols="30" rows="10"></textarea>
+    
+        
+    <input type="button" onclick="csvtojson()" value="convert">
+</form> 
+{% endcomment %}
+<script>
+    function csvtojson(){
+        var data = new FormData();
+        var csv = document.getElementById('input').value;
+        var token = '{{ csrf_token }}'
+        data.append('csv', csv);
+        data.append('csrfmiddlewaretoken', token);
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function (){
+            if(this.readyState == 4 && this.status == 200){
+                var out = JSON.parse(this.response);
+            
+                document.getElementById('output').innerHTML = out['ans'];
+                var link = '/media/'+ out['filename']+'.json';
+                    document.getElementById('download').setAttribute('href',link);
+                document.getElementById('filename').value = out['filename']
+                
+            }
+        };
+        request.open('POST', "{% url 'csv-json' %}", true);
+        request.send(data);
+    }
+
+    function save(){
+            var data2 = new FormData();
+            var original = 'csv';
+            var converted = 'json';
+            var filename = document.getElementById('filename').value;
+            var convName = document.getElementById('convName').value;
+            if( convName == ""){
+                alert('Conversion Name Cannot be empty');
+            }
+            else{
+                data2.append('original',original);
+                data2.append('converted',converted);
+                data2.append('filename',filename);
+                data2.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+                data2.append('convName', convName);
+                var request = new XMLHttpRequest();
+                request.onreadystatechange = function (){
+                    if(this.readyState == 4 && this.status == 200){
+                        var out = JSON.parse(this.response);
+                        alert('Saved Success')
+                        
+                    }
+                };
+                request.open('POST', "{% url 'save' %}", true);
+                request.send(data2);
+            }
+
+            
+        }
+</script>
+{% endblock content %}

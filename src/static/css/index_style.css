@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  background-color: #f4ece6;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}  
+  
+  
+  #showcase_img{
+    background-image: url('../../media/images/thomas-lefebvre-gp8BLyaTaA0-unsplash.jpg');
+    height: 91.5vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-top: 0px;
+  }
+
+  .main_intro_row{
+    margin-top: -20px;
+  }
+
+  .title_subhead{
+
+    margin-top: 33vh;
+  }
+
+  .title{
+    color: white; 
+    font-size: 50px;
+  }
+
+  .subhead{
+
+    color: white; 
+    font-size: 30px;
+  }
+
+
+  .container-fluid .services_header{
+
+    margin-top: 30px; 
+    margin-bottom:30px;
+    background-color:#d83838;
+  
+  }
+
+  /* #footer a{
+    text-decoration: none;
+    color: whitesmoke;
+    }
+  #footer h4{
+      color: aqua;
+  }
+  #footer a:hover{
+    color:maroon;
+  } */
+
+  .services_header .service_button{
+
+    padding-top: 50px;
+  }
+
+  #service_button{
+
+    padding-top: 20px;
+  }
+  .service_button .btn a{
+    background-color: black;
+
+  }
+
+  .service_button .buttons_links{
+
+    width: 100%;
+    margin-top:10px;
+  }
+
+  /* .footer_main{
+    background-color: black;    
+    margin-top: 116px;
+    padding-top: 25px;
+  }
+
+  .services_hr{
+
+    color: blue;
+  }
+
+  .help_hr{
+    color: yellow;
+  }
+
+  contact_hr{
+    background-color: green;
+  } */
+

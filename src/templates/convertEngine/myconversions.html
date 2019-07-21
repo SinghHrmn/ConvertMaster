@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block head-title %}
+    Your Conversions
+{% endblock head-title %}
+
+{% block content %}
+
+<!-- Main heading -->
+<div class="row col-md-offset-1 " >
+    <h1 style="margin-top: 35px;font-size:4rem; font-family:Trocchi ;color:#330000 ">
+        <b>MY CONVERSIONS</b>   
+    </h1>      
+</div>
+<hr style='height:8px;border: 0;box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);'>  
+
+<br><br><br>
+
+<!-- Conversions Showcase    -->
+
+<div class="row">
+    <div class="col-lg-2 col-sm-2">
+
+    </div>
+
+    <div class="col-lg-9 col-sm-9 col-xs-12">
+        <table class="table table-hover table-responsive" >
+            <tr>
+                <th><h5><b>ConversionName</b></h4></th>
+                <th><h5><b>From</b></h4></th>
+                <th><h5><b>To</b></h4></th>
+                <th><h5><b>View</b></h4></th>
+                <th><h5><b>Download</b></h4></th>
+            </tr>
+            {%for conversion in mydata%}
+        
+                <tr>
+                    <td id="convName" >{{conversion.convName}}</td>
+                    <td id="original">{{conversion.original}}</td>
+                    <td id="converted">{{conversion.converted}}</td>
+                    <td>
+                        <form action="{% url 'viewSingleConv' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{conversion.original}}" name='original'>
+                            <input type="hidden" value="{{conversion.converted}}" name='converted'>
+                            <input type="hidden" value="{{conversion.filename}}" name='filename'>
+                            
+                            <input type="hidden" value="{{conversion.convName}}" name='convName'>                             
+                            
+                            <input type="submit"  value="View" class="btn btn-primary">
+                                    
+                        </form>
+                    </td>
+                    
+                    <td><a href = '{{ conversion.downloadlink }}'  class="btn btn-primary" download><span class="glyphicon glyphicon-arrow-down"></span></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}

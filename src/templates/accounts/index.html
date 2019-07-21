@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+
+{% block head-title %}
+    Convert Master
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index_style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <header class="showcase">
+        <div class="content">
+            <img src="../static/images/cm_logo.webapp" class="logo" alt="Convert Master">
+            <div class="title">
+                Welcome to Convert Master
+            </div>
+            <div class="text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, qui?
+            </div>
+        </div>
+    </header>
+
+{% endblock %}

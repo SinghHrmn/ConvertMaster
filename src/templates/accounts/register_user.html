@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block head-title %} Register {% endblock %}
+
+{% block content %}
+
+    <!-- Jumbotron-->
+    <div class="row text-center" style="background-color:#e0e0d1;margin-top: -21px;padding-bottom: 13px;">
+        <h2 style="color: #8b0000">
+            <b> Register Here </b> 
+        </h2>
+    </div>
+    
+    <br><br><br>
+  
+  
+    <!-- Form div starts -->
+
+    <div class="container-fluid">
+
+        <div class='col-lg-1 col-sm-1 col-xs-12'>
+
+        </div>
+        <div class='col-lg-10 col-sm-10 col-xs-12'>
+                <!--Alerts-->
+                {% include 'partials/_alerts.html' %}
+                <form action="{% url 'register' %}" class='form-horizontal' method='POST'>
+                        {% csrf_token %}
+                        <!-- First Name -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" style='font-size:20px'>
+                                <b> Enter the FirstName  </b> 
+                            </label>
+                                <div class="col-sm-7">
+                                    <input class=" form-control " type='text' name='first_name' class="form-control">
+                                </div>
+                        </div>
+                        <br>
+                        <!-- Last Name -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" style='font-size:20px'>
+                                <b> Enter the LastName  </b> 
+                            </label>
+                                <div class="col-sm-7">
+                                    <input class=" form-control " type='text' name='last_name' class="form-control">
+                                </div>
+                        </div>
+                        <br>
+                        <!-- username -->
+                        <div class="form-group">
+                                <label class="control-label col-sm-3" style='font-size:20px'>
+                                    <b> Enter the UserName  </b> 
+                                </label>
+                                    <div class="col-sm-7">
+                                        <input class=" form-control " type='text' name='user_name' class="form-control">
+                                    </div>
+                            </div>
+                            <br>
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" style='font-size:20px'>
+                                <b> Enter the Email  </b> 
+                            </label>
+                                <div class="col-sm-7">
+                                    <input type="email" class="form-control" name="email">
+                                </div>
+                        </div>
+                        <br>
+                        <!-- password -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" style='font-size:20px'>
+                                Enter the Password
+                            </label>
+                            <div class="col-sm-7">          
+                              <input type='password' name='password' class="form-control">
+                            </div>
+                        </div>
+                
+                        <br>
+                        <!-- confirm password -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" style='font-size:20px'>
+                                Confirm Password
+                            </label>
+                            <div class="col-sm-7">          
+                              <input type='password' name='confirm_password'class="form-control">
+                            </div>
+                        </div>
+                        <br>
+                        <!-- Button -->
+                        <div class="col-lg-onset-2 col-lg-offset-2 col-lg-8">
+                            <div class="form-group text-center"> 
+                                    <input type="submit" class="btn btn-success form-control" value="Register" /> 
+                                    <br><br>
+                                    <h5>Already have an account? | <a href="{% url 'login' %}">Login</a> </h5>
+                            </div>                               
+                        </div>
+                    
+                    </form>
+
+        </div>
+
+        
+    </div>
+    
+{% endblock %}
