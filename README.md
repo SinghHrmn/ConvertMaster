@@ -45,6 +45,3 @@ Convert Master can also be used for downloading the converted file and also to p
     https://127.0.0.1:8000/
     ```
   
-# Documentation
-Documentation will be released soon
-![Convert Master Logo](./src/media/images/logo_short.png)
