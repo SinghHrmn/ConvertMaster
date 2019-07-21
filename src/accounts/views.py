@@ -45,12 +45,13 @@ def register_user(request):
                     user.save()
 
                     # Making Specified Directory for every User 
-                    os.mkdir(os.path.join(settings.MEDIA_ROOT, user_name))
-                    
+                    os.mkdir(os.path.join(settings.MEDIA_ROOT, user_name)) 
+
                     messages.success(request,"You are now registered and can login")
                     return HttpResponseRedirect(reverse('login'))
         else:
             messages.error(request,"Passwords do not match")
+            return HttpResponseRedirect(reverse('register'))
 
     return render(request,"accounts/register_user.html")
 
@@ -78,6 +79,8 @@ def login_user(request):
 # ======================================Logout==================================================
 def logout(request):
     if request.method=="POST":
+        
         auth.logout(request)
-        # messages.success(request,"You are logged out")
+
+        messages.success(request,"You are logged out")
         return HttpResponseRedirect(reverse('index'))

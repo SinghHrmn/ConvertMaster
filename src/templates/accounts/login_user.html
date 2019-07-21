@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
 {% block head-title %}Login{% endblock head-title %}
     
 {% block content %}
@@ -16,14 +18,14 @@
 <!-- Main Form -->
 <div class="container-fluid">
 
+    <!--Alerts-->
+    {% include 'partials/_alerts.html' %}
     <div class="col-lg-4 col-sm-4">
 
     </div>
-    
+
     <div class=" col-sm-10 text-center col-lg-4 ">
         <div class="card-body">
-            <!--Alerts-->
-            {% include 'partials/_alerts.html' %}
             <!-- Login Form  -->
             <form action="{% url 'login'  %}" class="form-group" id="register_form" method="POST">
                 

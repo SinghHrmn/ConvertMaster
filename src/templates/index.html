@@ -18,10 +18,16 @@
     
     <!-- css file -->
     <link rel="stylesheet" href="{% static 'css/index_style.css' %}">
+
+    <!-- javascript file -->
+    <script src="{% static 'main.js' %}" rel='stylesheet'></script>
 </head>
 <body>
   <!-- Navbar -->
   {% include 'partials/navbar.html' %}
+
+  <!--Alerts-->
+  {% include 'partials/_alerts.html' %}
  
   <div class="container-fluid">
      <!-- Showcase area -->
