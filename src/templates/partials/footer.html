@@ -46,12 +46,12 @@ body {
               <h4>Services</h4> 
               <hr class="services_hr">
               <ul class="list-unstyled">
-                <a href="">XML to JSON</a><br>
-                <a href="">XML to CSV</a><br>
-                <a href="">JSON to XML</a><br>
-                <a href="">JSON to CSV</a><br>
-                <a href="">CSV to JSON</a><br>
-                <a href="">CSV to XML</a><br>
+                <a href="{% url 'xml-json' %}">XML to JSON</a><br>
+                <a href="{% url 'xml-csv' %}">XML to CSV</a><br>
+                <a href="{% url 'json-xml' %}">JSON to XML</a><br>
+                <a href="{% url 'json-csv' %}">JSON to CSV</a><br>
+                <a href="{% url 'csv-json' %}">CSV to JSON</a><br>
+                <a href="{% url 'csv-xml' %}">CSV to XML</a><br>
     
               </ul>
             </div>
@@ -59,9 +59,9 @@ body {
               <h4>Help</h4> 
               <hr class="help_hr">
               <ul class="list-unstyled">
-                  <a href="">Documentation</a><br>
+                  <a href="https://github.com/SinghHrmn/ConvertMaster/blob/master/README.md#documentation">Documentation</a><br>
                   <a href="">FAQs</a><br>
-                  <a href="">API</a><br>
+                  <a href="{% url 'Doc' %}">API</a><br>
               </ul>
             </div>
             <div class="col-md-2 col-onset-3 col-xs-4">

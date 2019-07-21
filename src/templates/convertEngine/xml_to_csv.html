@@ -64,7 +64,7 @@
                             <button class="btn btn-primary" type="submit" disabled="disabled">Save Conversion</button>
                             <input type="button" disabled='disabled' value="Download" class="text-center btn btn-primary">
                         {% endif %}
-                        <input  type="button" onclick="jsontocsv()" value="Convert" class="text-center btn btn-danger">
+                        <input  type="button" onclick="xmltocsv()" value="Convert" class="text-center btn btn-danger">
                     </div>
                 </div>
 
@@ -165,6 +165,8 @@ Kriti Rikhi,B.Tech CSE,2017CSA1110
                     var out = JSON.parse(this.response);
                 
                     document.getElementById('output').innerHTML = out['ans'];
+                    var link = '/media/'+ out['filename']+'.csv';
+                    document.getElementById('download').setAttribute('href',link);
                     document.getElementById('filename').value = out['filename']
                     
                 }
