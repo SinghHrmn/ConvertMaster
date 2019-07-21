@@ -64,6 +64,7 @@ def xmlToJson(request):
         # preparing JSON response data    
         response = dict()
         response['ans'] = out
+        response['filename'] = filename
         
         # Removing the intermediate files if User is not Authenticated
         if request.user.is_superuser or request.user.is_authenticated:
@@ -98,6 +99,7 @@ def xmlToCsv(request):
             output_file_name = filename + '.csv'
 
         # Writing the post data to the file
+        
         saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
         saved_file.write(xml_data)
         saved_file.close()
@@ -117,6 +119,8 @@ def xmlToCsv(request):
         # preparing JSON response data    
         response = dict()
         response['ans'] = data_csv
+        response['filename'] = filename
+
         
         # Removing the intermediate files if User is not Authenticated
         if request.user.is_superuser or request.user.is_authenticated:
@@ -168,6 +172,8 @@ def csvToJson(request):
         # preparing JSON response data    
         response = dict()
         response['ans'] = out
+        response['filename'] = filename
+
         
         # Removing the intermediate files if User is not Authenticated
         if request.user.is_superuser or request.user.is_authenticated:
@@ -179,6 +185,7 @@ def csvToJson(request):
 
         # returning the JSON Response
         return JsonResponse(response, safe=False)
+
     else:
         return render(request,'convertEngine/csv_to_json.html')
 
@@ -242,6 +249,8 @@ def csvToXml(request):
         # preparing JSON response data    
         response = dict()
         response['ans'] = data_xml
+        response['filename'] = filename
+
         
         # Removing the intermediate files if User is not Authenticated
         if request.user.is_superuser or request.user.is_authenticated:
@@ -277,13 +286,13 @@ def jsonToCsv(request):
             output_file_name = filename + '.csv'
         
         # Writing the post data to the file
-        input_file_name = filename + '.json'
+
         saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
         saved_file.write(json_data)
         saved_file.close()
 
         # Converting JSON to CSV
-        output_file_name = filename + '.csv'
+        
         data_df = pd.read_json('media/' + input_file_name, orient='records')
         data_df.to_csv(os.path.join(settings.MEDIA_ROOT, output_file_name), index=False)
 
@@ -292,6 +301,8 @@ def jsonToCsv(request):
         # preparing JSON response data    
         response = dict()
         response['ans'] = data_csv
+        response['filename'] = filename
+
         
         # Removing the intermediate files if User is not Authenticated
         if request.user.is_superuser or request.user.is_authenticated:
@@ -392,7 +403,7 @@ def myconversions(request):
         d['converted']=obj.converted
         d['original'] = obj.original
         d['convName'] = obj.convName
-        downloadlink='/media/' + obj.user.username +'/'+ obj.filename + '.' + obj.converted
+        downloadlink='/media/' + str(obj.user.username) +'/'+ str(obj.filename) + '.' + str(obj.converted)
         d['downloadlink']=downloadlink
         x.append(d)
 
@@ -421,11 +432,11 @@ def SingleConversionView(request):
         # saved_file = open(os.path.join(settings.MEDIA_ROOT, input_file_name), 'w')
         
         
-        originalfilename=str(request.user)+ '/' + filename + '.' + str(original)
+        originalfilename=str(request.user)+ '/' + str(filename) + '.' + str(original)
         originalfile = open(os.path.join(settings.MEDIA_ROOT,originalfilename),'r').read()
 
         
-        convertedfilename=str(request.user) + '/' + filename + '.' + str(converted)
+        convertedfilename=str(request.user) + '/' + str(filename) + '.' + str(converted)
         convertedfile=open(os.path.join(settings.MEDIA_ROOT,convertedfilename),'r').read()
 
         context={
