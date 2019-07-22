@@ -45,3 +45,36 @@ Convert Master can also be used for downloading the converted file and also to p
     https://127.0.0.1:8000/
     ```
   
+# Documentation
+## XML to CSV
+For Converting
+```xml
+    <?xml version="1.0"?>
+    <csv_data>
+    <row>
+        <name>Harmandeep Singh</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1080</rollno>
+    </row>
+    <row>
+        <name>Gursharandeep Singh</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1076</rollno>
+    </row>
+    <row>
+        <name>Harmandeep Singh</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1078</rollno>
+    </row>
+    <row>
+        <name>Kriti Rikhi</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1110</rollno>
+    </row>
+    <row>
+        <name>Karan Choudhary</name>
+        <class>B. Tech CSE</class>
+        <rollno>2017CSA1102</rollno>
+    </row>
+    </csv_data>
+```
