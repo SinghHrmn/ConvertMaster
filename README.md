@@ -47,7 +47,8 @@ Convert Master can also be used for downloading the converted file and also to p
   
 # Documentation
 ## XML to CSV
-For Converting XML to CSV we will provide XML data which must include the <csv_data></csv_data> as firsrt root and thi 
+For Converting XML to CSV we will provide XML data which must include the <csv_data></csv_data> as firsrt root and each data should be included in row tag. The exaple code is given below
+### XML CODE
 ```xml
     <?xml version="1.0"?>
     <csv_data>
@@ -77,4 +78,242 @@ For Converting XML to CSV we will provide XML data which must include the <csv_d
         <rollno>2017CSA1102</rollno>
     </row>
     </csv_data>
+```
+### CSV CODE
+```csv
+class,name,rollno
+B.Tech CSE,Harmandeep Singh,2017CSA1080
+B.Tech CSE,Gursharandeep Singh,2017CSA1076
+B.Tech CSE,Harmandeep Singh,2017CSA1078
+B.Tech CSE,Kriti Rikhi,2017CSA1110
+B.Tech CSE,Karan Choudhary,2017CSA1102
+```
+## XML to JSON
+For Converting XML to JSON we will provide XML data which can be of any size. Here is some example code. 
+### XML CODE
+```xml
+    <?xml version="1.0"?>
+    <csv_data>
+    <row>
+        <name>Harmandeep Singh</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1080</rollno>
+    </row>
+    <row>
+        <name>Gursharandeep Singh</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1076</rollno>
+    </row>
+    <row>
+        <name>Harmandeep Singh</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1078</rollno>
+    </row>
+    <row>
+        <name>Kriti Rikhi</name>
+        <class>B.Tech CSE</class>
+        <rollno>2017CSA1110</rollno>
+    </row>
+    </csv_data>
+```
+### JSON CODE
+```json
+{
+ "csv_data": {
+  "row": [
+   {
+    "name": "Harmandeep Singh",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1080"
+   },
+   {
+    "name": "Gursharandeep Singh",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1076"
+   },
+   {
+    "name": "Harmandeep Singh",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1078"
+   },
+   {
+    "name": "Kriti Rikhi",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1110"
+   }
+  ]
+ }
+}
+```
+## JSON to CSV
+For Converting JSON to CSV we will provide JSON data which must include "csv_data" and "row" and the actual CSV data must be in "row". Here is some example code. 
+### JSON
+```json
+{
+ "csv_data": {
+  "row": [
+   {
+    "name": "Harmandeep Singh",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1080"
+   },
+   {
+    "name": "Gursharandeep Singh",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1076"
+   },
+   {
+    "name": "Harmandeep Singh",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1078"
+   },
+   {
+    "name": "Kriti Rikhi",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1110"
+   }
+  ]
+ }
+}
+```
+### CSV
+```csv
+class,name,rollno
+B.Tech CSE,Harmandeep Singh,2017CSA1080
+B.Tech CSE,Gursharandeep Singh,2017CSA1076
+B.Tech CSE,Harmandeep Singh,2017CSA1078
+B.Tech CSE,Kriti Rikhi,2017CSA1110
+```
+
+## JSON to XML
+For Converting JSON to XML we will provide JSON data which can be of any size. Here is some example code. 
+### JSON
+```json
+{
+ "csv_data": {
+  "row": [
+   {
+    "name": "Harmandeep Singh",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1080"
+   },
+   {
+    "name": "Gursharandeep Singh",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1076"
+   },
+   {
+    "name": "Harmandeep Singh",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1078"
+   },
+   {
+    "name": "Kriti Rikhi",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1110"
+   }
+  ]
+ }
+}
+```
+### XML CODE
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<csv_data>
+	<row>
+		<name>Harmandeep Singh</name>
+		<class>B.Tech CSE</class>
+		<rollno>2017CSA1080</rollno>
+	</row>
+	<row>
+		<name>Gursharandeep Singh</name>
+		<class>B.Tech CSE</class>
+		<rollno>2017CSA1076</rollno>
+	</row>
+	<row>
+		<name>Harmandeep Singh</name>
+		<class>B.Tech CSE</class>
+		<rollno>2017CSA1078</rollno>
+	</row>
+	<row>
+		<name>Kriti Rikhi</name>
+		<class>B.Tech CSE</class>
+		<rollno>2017CSA1110</rollno>
+	</row>
+</csv_data>
+```
+## CSV to XML
+For Converting CSV to XML we will provide CSV data which can be of any size. Here is some example code. 
+### CSV CODE
+```csv
+class,name,rollno
+B.Tech CSE,Harmandeep Singh,2017CSA1080
+B.Tech CSE,Gursharandeep Singh,2017CSA1076
+B.Tech CSE,Harmandeep Singh,2017CSA1078
+B.Tech CSE,Kriti Rikhi,2017CSA1110
+```
+### XML CODE
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<csv_data>
+	<row>
+		<name>Harmandeep Singh</name>
+		<class>B.Tech CSE</class>
+		<rollno>2017CSA1080</rollno>
+	</row>
+	<row>
+		<name>Gursharandeep Singh</name>
+		<class>B.Tech CSE</class>
+		<rollno>2017CSA1076</rollno>
+	</row>
+	<row>
+		<name>Harmandeep Singh</name>
+		<class>B.Tech CSE</class>
+		<rollno>2017CSA1078</rollno>
+	</row>
+	<row>
+		<name>Kriti Rikhi</name>
+		<class>B.Tech CSE</class>
+		<rollno>2017CSA1110</rollno>
+	</row>
+</csv_data>
+```
+## CSV to JSON
+For Converting CSV to JSON we will provide CSV data which can be of any size. Here is some example code. 
+### CSV CODE
+```csv
+class,name,rollno
+B.Tech CSE,Harmandeep Singh,2017CSA1080
+B.Tech CSE,Gursharandeep Singh,2017CSA1076
+B.Tech CSE,Harmandeep Singh,2017CSA1078
+B.Tech CSE,Kriti Rikhi,2017CSA1110
+```
+### JSON CODE
+```json
+{
+ "csv_data": {
+  "row": [
+   {
+    "name": "Harmandeep Singh",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1080"
+   },
+   {
+    "name": "Gursharandeep Singh",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1076"
+   },
+   {
+    "name": "Harmandeep Singh",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1078"
+   },
+   {
+    "name": "Kriti Rikhi",
+    "class": "B.Tech CSE",
+    "rollno": "2017CSA1110"
+   }
+  ]
+ }
+}
 ```
