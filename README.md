@@ -147,12 +147,10 @@ For Converting XML to JSON we will provide XML data which can be of any size. He
 }
 ```
 ## JSON to CSV
-For Converting JSON to CSV we will provide JSON data which must include "csv_data" and "row" and the actual CSV data must be in "row". Here is some example code. 
+For Converting JSON to CSV we will provide JSON data which must not include any top level key. Here is some example code. 
 ### JSON
 ```json
-{
- "csv_data": {
-  "row": [
+[
    {
     "name": "Harmandeep Singh",
     "class": "B.Tech CSE",
@@ -173,9 +171,7 @@ For Converting JSON to CSV we will provide JSON data which must include "csv_dat
     "class": "B.Tech CSE",
     "rollno": "2017CSA1110"
    }
-  ]
- }
-}
+]
 ```
 ### CSV
 ```csv
