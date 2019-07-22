@@ -69,7 +69,7 @@ def login_user(request):
             auth.login(request,user)
             request.session['User'] = user_name
             messages.success(request,"You are logged in")
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+            return HttpResponseRedirect(reverse('index'))
         else:
             messages.error(request,"Enter valid username or password")
             return HttpResponseRedirect(reverse('login'))

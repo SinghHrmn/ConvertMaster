@@ -167,7 +167,7 @@ Kriti Rikhi,B.Tech CSE,2017CSA1110
                 var out = JSON.parse(this.response);
             
                 document.getElementById('output').innerHTML = out['ans'];
-                var link = '/media/'+ out['filename']+'.json';
+                var link = '/media/'+ '{{ request.user}}' +'/'+out['filename']+'.json';
                     document.getElementById('download').setAttribute('href',link);
                 document.getElementById('filename').value = out['filename']
                 
