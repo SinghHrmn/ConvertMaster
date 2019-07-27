@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tw$3sd*50q_!jh&x#ybjp+9^t%8@d7zas^3t#a_z_ldnt@f5g4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['convertmasterweb.pythonanywhere.com','convertmaster.tk']
 
 
 # Application definition
