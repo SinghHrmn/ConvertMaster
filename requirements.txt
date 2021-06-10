@@ -1,5 +1,5 @@
 dicttoxml==1.7.4
-Django==2.2.10
+Django==2.2.24
 numpy==1.16.4
 pandas==0.24.2
 # pprint==0.1
